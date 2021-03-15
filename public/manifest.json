@@ -1,0 +1,23 @@
+{
+    "title": "Krychaxp App",
+    "short_name": "Krychaxp",
+    "name": "Krychaxp",
+    "description": "Programista Fullstack",
+    "start_url": "/?web_app",
+    "background_color": "#0059b2",
+    "theme_color": "#0059b2",
+    "display": "standalone",
+    "manifest_version": 2,
+    "icons": [
+        {
+            "src": "/favicon.ico",
+            "sizes": "48x48",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "/favicon.ico",
+            "sizes": "128x128",
+            "type": "image/x-icon"
+        }
+    ]
+}

@@ -1,0 +1,177 @@
+import React, { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import ReCAPTCHA from "react-google-recaptcha";
+import { Button, TextField, InputAdornment } from "@material-ui/core";
+import { AccountCircle, Mail } from "@material-ui/icons";
+import { sendEmail } from "src/api";
+import SEO from "src/seo";
+import styled from "styled-components";
+
+const Form = styled.form`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+  padding: 5px;
+  width: 100%;
+  flex-direction: column;
+`;
+
+const send = (val) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(async () => {
+      try {
+        resolve(await sendEmail(val));
+      } catch (error) {
+        reject(error);
+      }
+    }, 2000);
+  });
+};
+
+const InputName = ({ register, errors }) => {
+  return (
+    <TextField
+      label="Imię i Nazwisko"
+      name="name"
+      margin="normal"
+      variant="outlined"
+      fullWidth
+      inputRef={register({
+        required: "Podaj imię i nazwisko",
+        pattern: {
+          value: /^\D{3,} \D{3,}$/,
+          message: "Błędne imię lub nazwisko",
+        },
+      })}
+      InputProps={{
+        startAdornment: (
+          <InputAdornment position="start">
+            <AccountCircle />
+          </InputAdornment>
+        ),
+      }}
+      error={!!errors.name}
+      helperText={errors.name?.message}
+    />
+  );
+};
+
+const InputEmail = ({ register, errors }) => {
+  return (
+    <TextField
+      label="E-mail"
+      name="email"
+      margin="normal"
+      variant="outlined"
+      fullWidth
+      inputRef={register({
+        required: "Wpisz swój email",
+        pattern: {
+          value: /^[\w-\d.]{1,}@[\w-\d.]{1,}\.\w{2,}$/,
+          message: "Błędny email",
+        },
+      })}
+      InputProps={{
+        startAdornment: (
+          <InputAdornment position="start">
+            <Mail />
+          </InputAdornment>
+        ),
+      }}
+      error={!!errors.email}
+      helperText={errors.email?.message}
+    />
+  );
+};
+
+const InputText = ({ register, errors }) => {
+  return (
+    <TextField
+      label="Treść wiadomości"
+      name="text"
+      margin="normal"
+      variant="outlined"
+      fullWidth
+      rows={5}
+      multiline
+      InputLabelProps={{ shrink: true }}
+      inputRef={register({
+        required: "Wymagany jest opis",
+        pattern: { value: /^.{5,}$/, message: "Tekst musi mieć min. 5 znaków" },
+      })}
+      error={!!errors.text}
+      helperText={errors.text?.message}
+    />
+  );
+};
+
+const InputCaptcha = ({ register, setValue }) => {
+  const name = "recaptcha";
+  const onChange = (e) => setValue(name, e);
+  const onExpired = () => setValue(name, "");
+  useEffect(() => {
+    register({ name }, { required: "Potwierdź, że nie jesteś robotem" });
+  }, []);
+  return (
+    <ReCAPTCHA
+      sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_KEY}
+      onChange={onChange}
+      onExpired={onExpired}
+    />
+  );
+};
+
+const Component = () => {
+  const { register, handleSubmit, setValue, errors } = useForm();
+  const [messageWasSend, setMessageWasSend] = useState(false);
+
+  const onSubmit = async (data) => {
+    if (messageWasSend) {
+      return window.setAlert("error", "Już wysłałeś wiadomość");
+    }
+    try {
+      window.loading.open();
+      await send(data);
+      setMessageWasSend(true);
+      window.setAlert("success", "Wiadomość została wysłana");
+    } catch (e) {
+      window.setAlert("error", "Wiadomość nie została wysłana");
+    } finally {
+      window.loading.close();
+    }
+  };
+
+  const onError = (e) => {
+    const { recaptcha } = e;
+    if (recaptcha) {
+      const { message } = recaptcha;
+      window.setAlert("error", message);
+    }
+  };
+
+  return (
+    <>
+      <SEO title="Kontakt" />
+      <h1>Kontakt</h1>
+      <div>
+        <Form onSubmit={handleSubmit(onSubmit, onError)}>
+          <InputName register={register} errors={errors} />
+          <InputEmail register={register} errors={errors} />
+          <InputText register={register} errors={errors} />
+          <InputCaptcha register={register} setValue={setValue} />
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+            disabled={messageWasSend}
+          >
+            Wyślij
+          </Button>
+        </Form>
+      </div>
+    </>
+  );
+};
+
+export default Component;
