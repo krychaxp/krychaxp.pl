@@ -25,9 +25,4 @@ module.exports = nextTranslate({
       },
     ];
   },
-  pwa: {
-    disable: process.env.NODE_ENV === "development",
-    dest: "public",
-  },
 });
-//<iframe src="https://www.google.com/maps/d/embed?mid=1wetppM0lv2oIXLm23GoRr68Q_T9ul3M_" width="640" height="480"></iframe>
