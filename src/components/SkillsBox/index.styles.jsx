@@ -47,3 +47,7 @@ export const RatingWrapper = styled.div`
   box-shadow: 0 0 5px -1px var(--black-to-white);
   opacity: ${({ hasStars }) => +hasStars};
 `;
+
+export const ImgWrapper = styled.div`
+  margin: 10px;
+`;
