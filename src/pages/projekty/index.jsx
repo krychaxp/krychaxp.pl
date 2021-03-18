@@ -45,6 +45,7 @@ const ListItem = styled.a`
 `;
 
 const projects = [
+  ["http://rtf.krychaxp.pl/", "Read text faster"],
   ["dane-uzytkownika", "dane użytkownika"],
   ["github"],
   ["ip"],
