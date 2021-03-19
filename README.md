@@ -1,18 +1,7 @@
-Author: krychaxp
-Date: 12.12.2020
-
 ## Website
 
-See website on [krychaxp.pl](https://krychaxp.pl)
+[https://krychaxp.pl](https://krychaxp.pl)
 
+## Stack
 
-## 🚀 Quick start
-
-1.  **Start developing.**
-
-    ```shell
-    npm i
-    npm run dev
-    ```
-
-1.  **Open the source code and start editing!**
+React, Next.js, Material-UI, Next-translate, styled-components, react-hook-form, Vercel

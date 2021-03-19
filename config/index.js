@@ -1,5 +1,4 @@
 module.exports = {
-  lang: "pl",
   siteUrl: "https://krychaxp.pl",
   website: "krychaxp.pl",
   title: "Krystian Frydryk (Krychaxp)- Fullstack Developer",

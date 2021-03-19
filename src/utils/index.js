@@ -42,5 +42,3 @@ export const calculateONP = (b) => {
 export const conversion = (a = "", b = 10, c = 10) => {
   return (parseInt(a, b) || "").toString(c) || "Złe wartości";
 };
-
-// /[+*/-]/g
