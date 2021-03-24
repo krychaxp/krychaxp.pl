@@ -4,6 +4,7 @@ import { utm } from "config";
 import Img from "next/image";
 import styled from "styled-components";
 import useTranslation from "next-translate/useTranslation";
+import Link from "next/link";
 
 const ExpWrapper = styled.div`
   width: 100%;
@@ -87,12 +88,14 @@ const Exp = () => {
       <h1>{title}</h1>
       <ExpWrapper>
         {websites.map(([link, name, img], i) => (
-          <Card key={i}>
-            <CardWrapper href={link} target="_blank" rel="noopener">
-              <Img src={img} alt={name} layout="fill" />
-              <Title>{name}</Title>
-            </CardWrapper>
-          </Card>
+          <Link href={link} target="_blank" rel="noopener" key={i}>
+            <Card>
+              <CardWrapper href={link} target="_blank" rel="noopener">
+                <Img src={img} alt={name} layout="fill" />
+                <Title>{name}</Title>
+              </CardWrapper>
+            </Card>
+          </Link>
         ))}
       </ExpWrapper>
     </>
