@@ -14,7 +14,7 @@ const ExpWrapper = styled.div`
   flex-flow: row wrap;
 `;
 
-const Card = styled.div`
+const Card = styled.a`
   max-width: 500px;
   width: 100%;
   box-sizing: border-box;
@@ -88,9 +88,9 @@ const Exp = () => {
       <h1>{title}</h1>
       <ExpWrapper>
         {websites.map(([link, name, img], i) => (
-          <Link href={link} target="_blank" rel="noopener" key={i}>
-            <Card>
-              <CardWrapper href={link} target="_blank" rel="noopener">
+          <Link href={link} key={i}>
+            <Card href={link} target="_blank" rel="noopener">
+              <CardWrapper>
                 <Img src={img} alt={name} layout="fill" />
                 <Title>{name}</Title>
               </CardWrapper>
