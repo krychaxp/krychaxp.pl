@@ -22,7 +22,6 @@ const ViewSource = () => {
     try {
       window.loading.open();
       const validUrl = url.replace(/^https?:\/\//,'');
-      console.log(validUrl)
       const data = await getFreeUrl((prettify ? "pretty/" : "") + validUrl);
       setResultData(data);
     } catch (e) {
