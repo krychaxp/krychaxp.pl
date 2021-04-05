@@ -39,12 +39,9 @@ module.exports = {
     "https//www.google-analytics.com",
     "https://fonts.googleapis.com",
     "https://fonts.gstatic.com",
-    process.env.NEXT_PUBLIC_API_URL,
   ],
   fonts: [
     "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto&subset=latin-ext&display=swap",
-    // "https://fonts.googleapis.com/css?family=Roboto&display=swap",
-    // "https://fonts.googleapis.com/icon?family=Material+Icons"
   ],
   scripts: [
     `https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_TRACKING_ID}`,

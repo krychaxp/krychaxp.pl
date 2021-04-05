@@ -48,6 +48,6 @@ export const RatingWrapper = styled.div`
   opacity: ${({ hasStars }) => +hasStars};
 `;
 
-export const ImgWrapper = styled.div`
+export const ImgWrapper = styled.a`
   margin: 10px;
 `;
