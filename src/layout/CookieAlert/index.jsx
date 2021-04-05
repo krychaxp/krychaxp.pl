@@ -11,7 +11,7 @@ const CookieBox = styled.div`
   left: 0;
   right: 0;
   padding: 10px;
-  z-index: 99999;
+  z-index: 999;
   background-color: var(--white-to-dark);
   border-top: 2px solid #039;
   text-align: center;

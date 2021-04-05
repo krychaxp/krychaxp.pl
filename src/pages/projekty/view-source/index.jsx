@@ -8,7 +8,7 @@ const ViewSource = () => {
   const [code, setCode] = useState("");
   const [resultData, setResultData] = useState("");
   const [prettify, setPrettify] = useState(true);
-  
+
   const prettifyResult = () => {
     const isObject = typeof resultData === "object";
     return setCode(
@@ -18,9 +18,12 @@ const ViewSource = () => {
 
   const handleSearch = async (e) => {
     if (e) e.preventDefault();
+    console.log('xdddxdx')
     try {
       window.loading.open();
-      const data = await getFreeUrl((prettify ? "pretty/" : "") + url);
+      const validUrl = url.replace(/^https?:\/\//,'');
+      console.log(validUrl)
+      const data = await getFreeUrl((prettify ? "pretty/" : "") + validUrl);
       setResultData(data);
     } catch (e) {
       setCode(typeof e === "string" ? e : "Nie udało się pobrać danych");

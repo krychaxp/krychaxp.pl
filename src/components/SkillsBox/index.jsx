@@ -31,11 +31,11 @@ const SkillsBox = () => {
           <Card {...props} key={props.name} />
         ))}
       </SkillsWrapper>
-      <ImgWrapper>
-        <Link href={lighthouse}>
+      <Link href={lighthouse}>
+        <ImgWrapper href={lighthouse} title="lighthouse result">
           <Img src={lighthouse} width="1100" height="700" />
-        </Link>
-      </ImgWrapper>
+        </ImgWrapper>
+      </Link>
     </>
   );
 };

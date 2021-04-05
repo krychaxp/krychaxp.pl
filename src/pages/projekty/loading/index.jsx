@@ -18,7 +18,6 @@ const Loading = () => {
 
   useEffect(() => {
     const userTime = window.prompt("Podaj całkowity czas ładowania (w sek.)");
-    console.log("xddx");
     setTime(userTime);
   }, []);
 
