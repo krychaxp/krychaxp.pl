@@ -63,6 +63,7 @@ const SkillsList = [
   [3, "Next.js", <SiNextDotJs />],
   [3, "Styled Components", <SiStyledComponents />],
   [3, "SCSS", <FaSass />],
+  [3, "Prisma", <BsTriangleHalf />],
   [3, "NodeJS/Express", <FaNode />],
   [3, "REST API", <AiOutlineCloudServer />],
   [3, "Netlify", <SiNetlify />],
@@ -85,7 +86,6 @@ const SkillsList = [
   [2, "MySQL", <GrMysql />],
   [2, "Gatsby", <GrGatsbyjs />],
   [1, "Postgresql", <SiPostgresql />], //DiPostgresql
-  [1, "Prisma", <BsTriangleHalf />],
   [1, "GCP", <DiGoogleCloudPlatform />],
   [1, "WebSocket", <GiServerRack />],
   [1, "PHP", <FaPhp />],
