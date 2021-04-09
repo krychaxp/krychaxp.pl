@@ -3,6 +3,7 @@
 
 /public/sw.js
 /public/workbox*
+/public/fonts*
 
 *.rest
 

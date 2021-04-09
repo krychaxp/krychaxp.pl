@@ -1,7 +1,8 @@
 const nextTranslate = require("next-translate");
 const fs = require("fs");
+const { withGoogleFonts } = require("nextjs-google-fonts");
 
-module.exports = nextTranslate({
+const options = withGoogleFonts({
   rewrites: async () => {
     const file = fs.readFileSync("_rewrites", "utf-8");
     return file
@@ -28,4 +29,11 @@ module.exports = nextTranslate({
   future: {
     webpack5: true,
   },
+  googleFonts: {
+    fonts: [
+      "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto&subset=latin-ext&display=swap",
+    ],
+  },
 });
+
+module.exports = nextTranslate(options);

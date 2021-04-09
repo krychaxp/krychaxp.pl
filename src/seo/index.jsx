@@ -3,6 +3,7 @@ import Head from "next/head";
 import config from "config";
 import { useRouter } from "next/router";
 import { locales } from "i18n";
+import { GoogleFonts } from "nextjs-google-fonts/GoogleFonts";
 
 const setKeywords = (...arg) => {
   const arr = arg
@@ -79,12 +80,7 @@ const SEO = ({ description = "", title, image, children, keywords = [] }) => {
           href={`${process.env.NEXT_PUBLIC_HOST_URL}/${v}`}
         />
       ))}
-      {config.fonts.map((v) => (
-        <React.Fragment key={v}>
-          <link rel="stylesheet" href={v} />
-          <link rel="preload" as="style" href={v} />
-        </React.Fragment>
-      ))}
+      {GoogleFonts()}
       {config.preconnect.map((v) => (
         <link key={v} rel="preconnect dns-prefetch" href={v} />
       ))}
