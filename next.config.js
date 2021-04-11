@@ -1,4 +1,3 @@
-require('dotenv').config()
 const nextTranslate = require("next-translate");
 const { withGoogleFonts } = require("nextjs-google-fonts")
 

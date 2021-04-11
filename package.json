@@ -17,7 +17,6 @@
     "axios": "^0.21.1",
     "copy-to-clipboard": "^3.3.1",
     "dns-info": "^0.1.0",
-    "dotenv": "^8.2.0",
     "highcharts": "^8.2.2",
     "ip": "^1.1.5",
     "next": "^10.1.3",
