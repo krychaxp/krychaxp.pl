@@ -1,16 +1,16 @@
 const nextTranslate = require("next-translate");
-const fs = require("fs");
 const { withGoogleFonts } = require("nextjs-google-fonts")
+
 const options = withGoogleFonts({
-  rewrites: async () => {
+  async rewrites() {
     return [
       {
-        source: "/static/:slug*",
-        destination: `${process.env.CDN_URL_1}/:slug*`,
+        source: "/static/:path*",
+        destination: `${process.env.CDN_URL_1}/:path*`,
       },
       {
-        source: "/s3/:slug*",
-        destination: `${process.env.CDN_URL_2}/:slug*`,
+        source: "/s3/:path*",
+        destination: `${process.env.CDN_URL_2}/:path*`,
       },
     ];
   },
