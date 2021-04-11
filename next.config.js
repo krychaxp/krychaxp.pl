@@ -7,7 +7,7 @@ const options = withGoogleFonts({
     const file = fs.readFileSync("_rewrites", "utf-8");
     return file
       .split("\n")
-      .map((v) => v.split(" "))
+      .map((v) => v.replace(/\r/g, "").split(" "))
       .map(([source, destination]) => ({
         source,
         destination,
