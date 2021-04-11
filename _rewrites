@@ -1,2 +1,0 @@
-/static/:slug* https://cdn.krychaxp.pl/:slug*
-/s3/:slug* https://krychaxp.s3.eu-central-1.amazonaws.com/:slug*

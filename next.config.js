@@ -1,17 +1,18 @@
 const nextTranslate = require("next-translate");
 const fs = require("fs");
-const { withGoogleFonts } = require("nextjs-google-fonts");
-
+const { withGoogleFonts } = require("nextjs-google-fonts")
 const options = withGoogleFonts({
   rewrites: async () => {
-    const file = fs.readFileSync("_rewrites", "utf-8");
-    return file
-      .split("\n")
-      .map((v) => v.replace(/\r/g, "").split(" "))
-      .map(([source, destination]) => ({
-        source,
-        destination,
-      }));
+    return [
+      {
+        source: "/static/:slug*",
+        destination: `${process.env.CDN_URL_1}/:slug*`,
+      },
+      {
+        source: "/s3/:slug*",
+        destination: `${process.env.CDN_URL_2}/:slug*`,
+      },
+    ];
   },
   headers: async () => {
     return [
