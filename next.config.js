@@ -14,19 +14,6 @@ const options = withGoogleFonts({
       },
     ];
   },
-  headers: async () => {
-    return [
-      {
-        source: "/:path*",
-        headers: [
-          {
-            key: "X-Frame-Options",
-            value: "SAMEORIGIN",
-          },
-        ],
-      },
-    ];
-  },
   future: {
     webpack5: true,
   },
