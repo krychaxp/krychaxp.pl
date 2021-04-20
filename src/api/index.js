@@ -17,7 +17,6 @@ const send = (url, method = "get", options = {}, headers = {}) => {
 
 export const API = {
   git: "https://api.github.com",
-  corona: "https://api.covid19api.com",
 };
 
 export const getUrl = (url, options, method) => send(url, options, method);
@@ -33,8 +32,6 @@ export const sendEmail = (options) => send("/api/email", "post", options);
 export const getGithubUser = (nick) => send(`${API.git}/users/${nick}`);
 
 export const getCoronaCountry = (country = "poland") =>
-  send(`${API.corona}/total/dayone/country/${country}`);
+  send(`/api/coronavirus/country/${country}`);
 
-export const getCoronaCountries = () => send(`${API.corona}/countries`);
-
-export const getCoronaGlobal = () => send(`${API.corona}/summary`);
+export const getCoronaCountries = () => send(`/api/coronavirus/countries`);

@@ -22,7 +22,6 @@ const options = withGoogleFonts({
       "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto&subset=latin-ext&display=swap",
     ],
   },
-  reactStrictMode: true,
 });
 
 module.exports = nextTranslate(options);
