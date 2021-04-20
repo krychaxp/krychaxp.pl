@@ -18,7 +18,6 @@ const ViewSource = () => {
 
   const handleSearch = async (e) => {
     if (e) e.preventDefault();
-    console.log('xdddxdx')
     try {
       window.loading.open();
       const validUrl = url.replace(/^https?:\/\//,'');

@@ -1,21 +1,20 @@
 import React, { useEffect } from "react";
-import Header from "./Header";
-import Nav from "./Nav";
-import Footer from "./Footer";
-import Main from "./Main";
-import CookieAlert from "./CookieAlert";
-import Alert from "./Alert";
-import Loading from "./Loading";
-import Settings from "./Settings";
+import { Header } from "./Header";
+import { Nav } from "./Nav";
+import { Footer } from "./Footer";
+import { Main } from "./Main";
+import { CookieAlert } from "./CookieAlert";
+import { Alert } from "./Alert";
+import { Loading } from "./Loading";
 
-const Layout = ({ children }) => {
-  const onOnline = () => {
-    window.setAlert("info", "Ponownie połączono z internetem.");
-  };
-  const onOffline = () => {
-    window.setAlert("warning", "Stracono połączenie z internetem.");
-  };
+export const Layout = ({ children }) => {
   useEffect(() => {
+    const onOnline = () => {
+      window.setAlert("info", "Ponownie połączono z internetem.");
+    };
+    const onOffline = () => {
+      window.setAlert("warning", "Stracono połączenie z internetem.");
+    };
     window.addEventListener("offline", onOffline);
     window.addEventListener("online", onOnline);
     return () => {
@@ -23,6 +22,7 @@ const Layout = ({ children }) => {
       window.removeEventListener("online", onOnline);
     };
   }, []);
+
   return (
     <>
       <Alert />
@@ -35,9 +35,6 @@ const Layout = ({ children }) => {
       </Main>
       <Footer />
       <CookieAlert />
-      <Settings />
     </>
   );
 };
-
-export default Layout;

@@ -16,7 +16,7 @@ const Box = styled.div`
   z-index: 9999 !important;
 `;
 
-const Loading = () => {
+const Component = () => {
   const [value, setValue] = useState(false);
   useEffect(() => {
     window.loading = {
@@ -26,14 +26,12 @@ const Loading = () => {
   }, []);
 
   return (
-    <>
-      {value && (
-        <Box>
-          <CircularProgress color="inherit" />
-        </Box>
-      )}
-    </>
+    value && (
+      <Box>
+        <CircularProgress color="inherit" />
+      </Box>
+    )
   );
 };
 
-export default memo(Loading);
+export const Loading = memo(Component);

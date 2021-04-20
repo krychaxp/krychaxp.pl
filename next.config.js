@@ -1,5 +1,5 @@
 const nextTranslate = require("next-translate");
-const { withGoogleFonts } = require("nextjs-google-fonts")
+const { withGoogleFonts } = require("nextjs-google-fonts");
 
 const options = withGoogleFonts({
   async rewrites() {
@@ -22,6 +22,7 @@ const options = withGoogleFonts({
       "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto&subset=latin-ext&display=swap",
     ],
   },
+  reactStrictMode: true,
 });
 
 module.exports = nextTranslate(options);

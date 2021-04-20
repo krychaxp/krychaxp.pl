@@ -45,7 +45,7 @@ const Burger = styled.div`
     `}
 `;
 
-const MenuBtn = () => {
+export const MenuButton = () => {
   const { navIsOpen, setNavIsOpen } = useApp();
   return (
     <IconButton
@@ -60,5 +60,3 @@ const MenuBtn = () => {
     </IconButton>
   );
 };
-
-export default MenuBtn;

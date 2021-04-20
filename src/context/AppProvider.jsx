@@ -1,4 +1,10 @@
-import React, { useState, useContext, createContext, useEffect } from "react";
+import React, {
+  useState,
+  useContext,
+  createContext,
+  useMemo,
+  useEffect,
+} from "react";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { useLocalStorageBoolean } from "react-use-window-localstorage";
 
@@ -7,12 +13,16 @@ const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const [darkMode, setDarkMode] = useLocalStorageBoolean("dark-mode", false);
   const [navIsOpen, setNavIsOpen] = useState(false);
-  const [settingsIsOpen, setSettingsIsOpen] = useState(false);
-  const darkTheme = createMuiTheme({
-    palette: {
-      type: darkMode ? "dark" : "light",
-    },
-  });
+  const darkTheme = useMemo(
+    () =>
+      createMuiTheme({
+        palette: {
+          type: darkMode ? "dark" : "light",
+        },
+      }),
+    [darkMode]
+  );
+
   useEffect(() => {
     if (darkMode) {
       document.body.classList.add("dark-mode");
@@ -20,6 +30,7 @@ export const AppProvider = ({ children }) => {
       document.body.classList.remove("dark-mode");
     }
   }, [darkMode]);
+  
   return (
     <AppContext.Provider
       value={{
@@ -27,8 +38,6 @@ export const AppProvider = ({ children }) => {
         setDarkMode,
         navIsOpen,
         setNavIsOpen,
-        settingsIsOpen,
-        setSettingsIsOpen,
       }}
     >
       <ThemeProvider theme={darkTheme}>{children}</ThemeProvider>

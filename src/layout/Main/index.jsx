@@ -25,7 +25,7 @@ const BackButton = styled.div`
   box-sizing: border-box;
 `;
 
-const Main = ({ children }) => {
+export const Main = ({ children }) => {
   const { t } = useTranslation("common");
   const router = useRouter();
   const renderButton = useMemo(() => /^\/projekty\/.+/.test(router.pathname), [
@@ -48,4 +48,3 @@ const Main = ({ children }) => {
     </MainBox>
   );
 };
-export default Main;

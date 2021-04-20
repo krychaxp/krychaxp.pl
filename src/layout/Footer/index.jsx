@@ -19,7 +19,7 @@ const MadeWith = styled.div`
   font-size: 12px;
 `;
 
-const Footer = () => {
+const Component = () => {
   const { t } = useTranslation("common");
   const pp = t("cookie-title");
   return (
@@ -55,4 +55,4 @@ const Footer = () => {
   );
 };
 
-export default memo(Footer);
+export const Footer = memo(Component);

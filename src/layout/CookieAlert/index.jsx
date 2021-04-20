@@ -22,7 +22,7 @@ const CookieBox = styled.div`
   }
 `;
 
-const CookieAlert = () => {
+export const CookieAlert = memo(() => {
   const [open, setOpen] = useState(false);
   const { t } = useTranslation("common");
   const title = t("cookie-title");
@@ -50,5 +50,4 @@ const CookieAlert = () => {
       </Button>
     </CookieBox>
   );
-};
-export default memo(CookieAlert);
+});

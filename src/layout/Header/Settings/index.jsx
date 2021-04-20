@@ -27,9 +27,9 @@ const Content = styled.div`
   }
 `;
 
-function Settings() {
+export const Settings = ({ settingsIsOpen, setSettingsIsOpen }) => {
   const { t, lang } = useTranslation("common");
-  const { setDarkMode, darkMode, settingsIsOpen, setSettingsIsOpen } = useApp();
+  const { setDarkMode, darkMode } = useApp();
   const handleCloseSettings = () => setSettingsIsOpen(false);
   const handleMode = (e) => setDarkMode(e.target.checked);
   const handleChangeLanguage = async (e) => await setLanguage(e.target.value);
@@ -79,6 +79,4 @@ function Settings() {
       </DialogActions>
     </Dialog>
   );
-}
-
-export default Settings;
+};
