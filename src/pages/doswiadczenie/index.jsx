@@ -72,6 +72,7 @@ const websites = [
     "swq.netlify.app (Hackyeah task)",
     "/img/img_src/swq.png",
   ],
+  [`https://mmorpg.org.pl/${utm}`, "mmorpg.org.pl", "/img/img_src/mmo.png"],
 ];
 
 const Exp = () => {
