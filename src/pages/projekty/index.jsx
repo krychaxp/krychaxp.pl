@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import Link from "next/link";
 import SEO from "src/seo";
 import { FcOpenedFolder } from "react-icons/fc";
 import { FaListUl, FaGripHorizontal } from "react-icons/fa";
+import { IoMdOpen } from "react-icons/io";
 import { IconButton } from "@material-ui/core";
 import { useLocalStorageString } from "react-use-window-localstorage";
 import styled, { css } from "styled-components";
@@ -34,6 +35,7 @@ const ListItem = styled.a`
   padding: 20px;
   width: 100%;
   text-transform: capitalize;
+  position: relative;
   & > svg {
     margin-right: 20px;
   }
@@ -42,6 +44,12 @@ const ListItem = styled.a`
     color: black;
   }
   max-width: ${({ isList }) => (isList ? 600 : 250)}px;
+`;
+
+const NewWindow = styled.div`
+  position: absolute;
+  top: 5px;
+  right: 5px;
 `;
 
 const projects = [
@@ -54,6 +62,7 @@ const projects = [
   ["konwersja", "konwersja liczb"],
   ["https://labirynt.krychaxp.pl/", "labirynt"],
   ["https://wojsko.krychaxp.pl/", "wojsko"],
+  ["https://weather-app-krychaxp.netlify.app/", "Weather app"],
   ["loading"],
   ["lokalizacja"],
   ["onp", "ONP"],
@@ -63,6 +72,7 @@ const projects = [
 ].map(([path, name]) => ({
   path: /^(\/|http)/.test(path) ? path : `/projekty/${path}`,
   name: name ? name : path,
+  isTarget: path.startsWith("http"),
 }));
 
 const Projects = () => {
@@ -105,10 +115,15 @@ const Projects = () => {
         </IconButton>
       </Buttons>
       <Box>
-        {projects.map(({ path, name }, i) => (
+        {projects.map(({ path, name, isTarget }, i) => (
           <Link href={path} key={i}>
             <ListItem href={path} title={name} isList={isList}>
               <FcOpenedFolder /> {name}
+              {isTarget && (
+                <NewWindow>
+                  <IoMdOpen />
+                </NewWindow>
+              )}
             </ListItem>
           </Link>
         ))}
