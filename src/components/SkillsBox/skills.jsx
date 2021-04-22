@@ -26,7 +26,7 @@ import {
   DiMongodb,
   DiGoogleCloudPlatform,
 } from "react-icons/di";
-import { AiFillHtml5, AiOutlineCloudServer, AiFillBug } from "react-icons/ai";
+import { AiFillHtml5, AiOutlineCloudServer } from "react-icons/ai";
 import { IoLogoVercel } from "react-icons/io5";
 import {
   GrMysql,
@@ -50,6 +50,7 @@ import {
   SiStyledComponents,
   SiPostgresql,
   SiMicrosoftazure,
+  SiRedux,
 } from "react-icons/si";
 
 const colors = ["#cc0000", "#ff9933", "#ffff00", "#00e600"];
@@ -98,7 +99,7 @@ const SkillsList = [
   [1, "C++", "C++"],
   [1, "Canvas / Gry", <FaEdit />],
   [0, "Azure", <SiMicrosoftazure />],
-  [0, "Redux", <AiFillBug />],
+  [0, "Redux", <SiRedux />],
   [0, "Bootstrap", <FaBootstrap />],
   [0, "Docker", <GrDocker />],
   [0, "Three.js", <FaCubes />],
