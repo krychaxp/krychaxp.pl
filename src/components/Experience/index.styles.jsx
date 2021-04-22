@@ -13,11 +13,11 @@ export const Card = styled.div`
   width: 100%;
   box-sizing: border-box;
   margin: 10px;
-  box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.7);
-  overflow: hidden;
-  transition: transform 0.3s;
+  & > * {
+    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.4) !important;
+  }
   cursor: pointer;
-  text-align:left;
+  text-align: left;
 `;
 
 export const ImgWrapper = styled.a`

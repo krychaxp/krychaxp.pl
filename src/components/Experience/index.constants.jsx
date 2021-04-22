@@ -62,12 +62,13 @@ export const websites = [
     stack: getStack(1, 8, 3, 4, 5),
     descr: "",
   },
-  {
-    link: `https://mmorpg.org.pl/${utm}`,
-    name: "mmorpg.org.pl",
-    img: "/img/img_src/mmo.png",
-    position: "Fullstack",
-    stack: getStack(1, 3, 4, 5, 7, 8, 11, 12, 13),
-    descr: "",
-  },
+  // {
+  //   link: `https://mmorpg.org.pl/${utm}`,
+  //   name: "mmorpg.org.pl",
+  //   img: "/img/img_src/mmo.png",
+  //   position: "Fullstack",
+  //   stack: getStack(1, 3, 4, 5, 7, 8, 11, 12, 13),
+  //   descr: "",
+  // },
+  // in building
 ];
