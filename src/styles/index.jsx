@@ -54,10 +54,7 @@ body {
     font-size: 20px;
     background-color: var(--white-to-dark);
     color: var(--black-to-white);
-    padding-right: 0px !important;
-    overflow: auto !important;
     text-align: center;
-    display:block !important;
 }
 a {
     cursor: pointer;
