@@ -1,11 +1,7 @@
 import React from "react";
 import SEO from "src/seo";
-import dynamic from "next/dynamic";
 import useTranslation from "next-translate/useTranslation";
-
-const SkillsBox = dynamic(() => import("../../components/SkillsBox"), {
-  ssr: false,
-});
+import { SkillsBox } from "src/components/SkillsBox";
 
 const Skills = () => {
   const { t } = useTranslation("menu");

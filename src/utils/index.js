@@ -14,7 +14,10 @@ export const calculateONP = (b) => {
     }
   };
   const wynik = [];
-  let a = b.trim().split(/\s+/);
+  let a = b
+    .trim()
+    .split(/\s+/)
+    .filter((v) => v);
   wynik.push([...a]);
   if (a.length < 3) {
     wynik.push(["Za mało znaków"]);
