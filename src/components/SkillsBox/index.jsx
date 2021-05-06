@@ -1,6 +1,6 @@
 import { memo } from "react";
 import Flip from "react-reveal/Flip";
-import skills from "./skills";
+import { skills } from "./skills";
 import {
   SkillsWrapper,
   CardWrapper,
@@ -22,7 +22,7 @@ const Card = ({ icon, color, name }) => {
   );
 };
 
-const SkillsBox = () => {
+export const SkillsBox = memo(() => {
   const lighthouse = "/img/lighthouse.png";
   return (
     <>
@@ -31,13 +31,11 @@ const SkillsBox = () => {
           <Card {...props} key={props.name} />
         ))}
       </SkillsWrapper>
-      <Link href={lighthouse}>
-        <ImgWrapper href={lighthouse} title="lighthouse result">
+      <Link href={lighthouse} passHref>
+        <ImgWrapper title="lighthouse result">
           <Img src={lighthouse} width="1100" height="700" />
         </ImgWrapper>
       </Link>
     </>
   );
-};
-
-export default memo(SkillsBox);
+});

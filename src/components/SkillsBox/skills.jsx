@@ -27,7 +27,7 @@ import {
   DiGoogleCloudPlatform,
 } from "react-icons/di";
 import { AiFillHtml5, AiOutlineCloudServer } from "react-icons/ai";
-import { IoLogoVercel } from "react-icons/io5";
+import { IoLogoVercel, IoSpeedometerOutline } from "react-icons/io5";
 import {
   GrMysql,
   GrOptimize,
@@ -55,7 +55,7 @@ import {
 
 const colors = ["#cc0000", "#ff9933", "#ffff00", "#00e600"];
 
-const SkillsList = [
+export const skills = [
   [3, "HTML 5", <AiFillHtml5 />],
   [3, "CSS 3", <FaCss3Alt />],
   [3, "Javascript", <DiJavascript1 />],
@@ -75,18 +75,19 @@ const SkillsList = [
   [3, "JWT", <FaKey />],
   [3, "KISS", "KISS"],
   [3, "DRY", "DRY"],
+  [3, "SEO", <GrOptimize />],
+  [3, "Performance", <IoSpeedometerOutline />],
   [2, "MongoDB", <DiMongodb />],
   [2, "MaterialUI", <SiMaterialUi />],
   [2, "Accessibility", <FaUniversalAccess />],
-  [2, "SEO", <GrOptimize />],
   [2, "DevOps", <SiOpslevel />],
   [2, "Animacje", <FaSith />],
   [2, "Git/Github", <FaGithub />],
   [2, "Charts (Highcharts)", <FaChartBar />],
-  [2, "AWS", <FaAws />],
   [2, "MySQL", <GrMysql />],
   [2, "Gatsby", <GrGatsbyjs />],
-  [1, "Postgresql", <SiPostgresql />], //DiPostgresql
+  [2, "Postgresql", <SiPostgresql />],
+  [1, "AWS", <FaAws />],
   [1, "GCP", <DiGoogleCloudPlatform />],
   [1, "WebSocket", <GiServerRack />],
   [1, "PHP", <FaPhp />],
@@ -98,8 +99,8 @@ const SkillsList = [
   [1, "Wordpress", <FaWordpressSimple />],
   [1, "C++", "C++"],
   [1, "Canvas / Gry", <FaEdit />],
+  [1, "Redux", <SiRedux />],
   [0, "Azure", <SiMicrosoftazure />],
-  [0, "Redux", <SiRedux />],
   [0, "Bootstrap", <FaBootstrap />],
   [0, "Docker", <GrDocker />],
   [0, "Three.js", <FaCubes />],
@@ -113,5 +114,3 @@ const SkillsList = [
   color: colors[rating],
   rating,
 }));
-
-export default SkillsList;

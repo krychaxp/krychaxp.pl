@@ -23,8 +23,7 @@ const Item = styled.div`
   min-width: 30px;
   height: 30px;
   padding: 0 5px;
-  background-color: ${({ isUsed }) =>
-    isUsed ? "red" : "var(--blue-to-darker)"};
+  background-color: var(--blue-to-darker);
   color: white;
   border-radius: 5px;
   margin: 2px;
@@ -81,4 +80,9 @@ const ONP = () => {
     </>
   );
 };
+
 export default ONP;
+
+export const getStaticProps = () => {
+  return { props: {} };
+};

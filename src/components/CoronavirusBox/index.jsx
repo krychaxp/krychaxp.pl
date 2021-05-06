@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { getCoronaCountry, getCoronaCountries } from "src/api";
-
 import Highcharts from "highcharts";
 import exporting from "highcharts/modules/exporting";
 import { FullWidth } from "./index.styles";
@@ -13,7 +12,7 @@ import {
   periodArray,
 } from "./others";
 
-export default function index() {
+export const CoronavirusBox = () => {
   const [coronavirus, setCoronavirus] = useState(null);
   const [period, setPeriod] = useState(periodArray[0].id);
   const [series, setSeries] = useState([]);
@@ -136,4 +135,4 @@ export default function index() {
       <TableData series={series} coronavirus={coronavirus} period={period} />
     </FullWidth>
   );
-}
+};

@@ -1,10 +1,6 @@
 import SEO from "src/seo";
-import dynamic from "next/dynamic";
 import useTranslation from "next-translate/useTranslation";
-
-const CoronavirusBox = dynamic(() => import("src/components/CoronavirusBox"), {
-  ssr: false,
-});
+import { CoronavirusBox } from "src/components/CoronavirusBox";
 
 const Component = () => {
   const { t } = useTranslation("menu");
