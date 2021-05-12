@@ -20,6 +20,7 @@ import {
   FaNpm,
   FaAngular,
   FaVuejs,
+  FaLinux,
 } from "react-icons/fa";
 import {
   DiJavascript1,
@@ -100,6 +101,7 @@ export const skills = [
   [1, "C++", "C++"],
   [1, "Canvas / Gry", <FaEdit />],
   [1, "Redux", <SiRedux />],
+  [1, "Linux", <FaLinux />],
   [0, "Azure", <SiMicrosoftazure />],
   [0, "Bootstrap", <FaBootstrap />],
   [0, "Docker", <GrDocker />],

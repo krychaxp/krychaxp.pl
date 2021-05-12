@@ -33,7 +33,7 @@ export const SkillsBox = memo(() => {
       </SkillsWrapper>
       <Link href={lighthouse} passHref>
         <ImgWrapper title="lighthouse result">
-          <Img src={lighthouse} width="1100" height="700" />
+          <Img src={lighthouse} width="1100" height="700" alt="lighthouse result"/>
         </ImgWrapper>
       </Link>
     </>
