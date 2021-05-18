@@ -5,7 +5,7 @@ import { FcOpenedFolder } from "react-icons/fc";
 import { FaListUl, FaGripHorizontal } from "react-icons/fa";
 import { IoMdOpen } from "react-icons/io";
 import { IconButton } from "@material-ui/core";
-import { useLocalStorageString } from "react-use-window-localstorage";
+import { useLocalStorage } from "react-use";
 import styled, { css } from "styled-components";
 import useTranslation from "next-translate/useTranslation";
 
@@ -78,7 +78,7 @@ const projects = [
 const Projects = () => {
   const { t } = useTranslation();
   const title = t("menu:projects");
-  const [layoutStyle, setLayoutStyle] = useLocalStorageString(
+  const [layoutStyle, setLayoutStyle] = useLocalStorage(
     "projects_style",
     "list"
   );
@@ -117,7 +117,13 @@ const Projects = () => {
       <Box>
         {projects.map(({ path, name, isTarget }, i) => (
           <Link href={path} key={i}>
-            <ListItem href={path} title={name} isList={isList}>
+            <ListItem
+              href={path}
+              title={name}
+              isList={isList}
+              target={isTarget ? "_blank" : undefined}
+              rel="noopener"
+            >
               <FcOpenedFolder /> {name}
               {isTarget && (
                 <NewWindow>

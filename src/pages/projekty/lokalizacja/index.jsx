@@ -13,7 +13,7 @@ import {
 } from "@material-ui/core";
 import { BiExit, BiShareAlt } from "react-icons/bi";
 import { RiFileCopyLine } from "react-icons/ri";
-import copy from "copy-to-clipboard";
+import { useCopyToClipboard } from "react-use";
 
 const getErrorInfo = (error) => {
   switch (error.code) {
@@ -64,6 +64,7 @@ const MapsLink = ({ link }) => {
 
 const CopyLink = ({ link }) => {
   const [open, setOpen] = useState(false);
+  const [_, copyToClipboard] = useCopyToClipboard();
 
   return (
     <ClickAwayListener onClickAway={() => setOpen(false)}>
@@ -74,7 +75,7 @@ const CopyLink = ({ link }) => {
           size="large"
           onClick={() => {
             setOpen(true);
-            copy(link);
+            copyToClipboard(link);
           }}
         >
           Kopiuj link do Google maps &nbsp;

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import FullScreen from "src/components/FullScreen";
+import { FullScreen } from "src/components/FullScreen";
 import SEO from "src/seo";
 import styled, { keyframes } from "styled-components";
 
@@ -40,7 +40,7 @@ const Back = () => {
     <>
       <SEO title="Kolorowe tło" />
       <h1>Kolorowe tło</h1>
-      <FullScreen info>
+      <FullScreen showInfo>
         <Component meter={meter} />
       </FullScreen>
     </>

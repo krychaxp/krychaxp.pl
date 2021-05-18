@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import {
   DialogTitle,
   Dialog,
@@ -10,7 +11,7 @@ import {
 } from "@material-ui/core";
 import { GiResize } from "react-icons/gi";
 import { useApp } from "src/context/AppProvider";
-import screenfull from "screenfull";
+import { useFullscreen, useToggle } from "react-use";
 import useTranslation from "next-translate/useTranslation";
 import i18n from "i18n";
 import styled from "styled-components";
@@ -34,6 +35,13 @@ export const Settings = ({ settingsIsOpen, setSettingsIsOpen }) => {
   const handleMode = (e) => setDarkMode(e.target.checked);
   const handleChangeLanguage = async (e) => await setLanguage(e.target.value);
 
+  const ref = useRef(
+    typeof window !== "undefined" && window.document.querySelector("body")
+  );
+  const [show, toggle] = useToggle(false);
+
+  useFullscreen(ref, show);
+
   return (
     <Dialog
       id="settings"
@@ -49,11 +57,7 @@ export const Settings = ({ settingsIsOpen, setSettingsIsOpen }) => {
       </Content>
       <Content>
         FullScreen:{" "}
-        <IconButton
-          onClick={() => {
-            screenfull.toggle();
-          }}
-        >
+        <IconButton onClick={toggle}>
           <GiResize />
         </IconButton>
       </Content>
