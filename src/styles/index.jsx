@@ -6,7 +6,7 @@ export const GlobalStyle = createGlobalStyle`
   margin: 0;
 }
 :root{
-    --header-height:80px;
+    --header-height:min(80px,12vw);
 }
 :root:not(.dark-mode) {
     --white-to-dark: white;

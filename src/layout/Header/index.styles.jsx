@@ -11,6 +11,11 @@ export const Buttons = styled.div`
   & > * {
     margin: 0 15px 0 0 !important;
   }
+  @media (max-width: 500px) {
+    & > * {
+      margin: 0 !important;
+    }
+  }
 `;
 
 export const HeaderTop = styled.header`
@@ -23,15 +28,13 @@ export const HeaderTop = styled.header`
   left: 0;
   width: 100%;
   transition: box-shadow 0.3s;
-  ${({ headerIsScrolling }) =>
-    headerIsScrolling &&
-    css`
-      box-shadow: 0 -10px 20px 5px var(--black-to-white);
-    `}
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
+  &[data-scrolled="true"] {
+    box-shadow: 0 -10px 20px 5px var(--black-to-white);
+  }
 `;
 
 export const Logo = styled.a`

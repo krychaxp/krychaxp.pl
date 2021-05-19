@@ -22,7 +22,7 @@ export const Nav = () => {
   }, [navIsOpen]);
 
   return (
-    <NavWrapper navIsOpen={navIsOpen}>
+    <NavWrapper data-open={navIsOpen}>
       {menuItems.map(({ name, path, icon }) => {
         const title = t(name);
         return (
