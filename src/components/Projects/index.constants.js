@@ -1,0 +1,22 @@
+export const projectsList = [
+  ["http://rtf.krychaxp.pl/", "Read text faster"],
+  ["dane-uzytkownika", "dane użytkownika"],
+  ["github"],
+  ["ip"],
+  ["view-source"],
+  ["kolorowe-tlo", "kolorowe tło"],
+  ["konwersja", "konwersja liczb"],
+  ["https://labirynt.krychaxp.pl/", "labirynt"],
+  ["https://wojsko.krychaxp.pl/", "wojsko"],
+  ["https://weather-app-krychaxp.netlify.app/", "Weather app"],
+  ["loading"],
+  ["lokalizacja"],
+  ["onp", "ONP"],
+  ["powiadomienia"],
+  ["pusc-glos", "puść głos"],
+  ["/koronawirus", "koronawirus"],
+].map(([path, name]) => ({
+  path: /^(\/|http)/.test(path) ? path : `/projekty/${path}`,
+  name: name ? name : path,
+  isTarget: path.startsWith("http"),
+}));
