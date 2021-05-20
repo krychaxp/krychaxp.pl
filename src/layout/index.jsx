@@ -4,16 +4,17 @@ import { Nav } from "./Nav";
 import { Footer } from "./Footer";
 import { Main } from "./Main";
 import { CookieAlert } from "./CookieAlert";
-import { Alert } from "./Alert";
-import { Loading } from "./Loading";
+import { useAlert } from "src/hooks/useAlert";
 
 export const Layout = ({ children }) => {
+  const { setAlert } = useAlert();
+
   useEffect(() => {
     const onOnline = () => {
-      window.setAlert("info", "Ponownie połączono z internetem.");
+      setAlert("info", "Ponownie połączono z internetem.");
     };
     const onOffline = () => {
-      window.setAlert("warning", "Stracono połączenie z internetem.");
+      setAlert("warning", "Stracono połączenie z internetem.");
     };
     window.addEventListener("offline", onOffline);
     window.addEventListener("online", onOnline);
@@ -25,8 +26,6 @@ export const Layout = ({ children }) => {
 
   return (
     <>
-      <Alert />
-      <Loading />
       <Header />
       <Nav />
       <Main>

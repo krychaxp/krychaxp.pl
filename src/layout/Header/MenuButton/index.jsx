@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { useApp } from "src/context/AppProvider";
+import { useApp } from "src/hooks/useApp";
 import { IconButton } from "@material-ui/core";
 
 const Burger = styled.div`

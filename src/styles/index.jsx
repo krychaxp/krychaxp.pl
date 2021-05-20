@@ -37,6 +37,9 @@ mark {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--blue-to-darker);
 }
+::backdrop {
+    background: var(--white-to-dark);
+}
 code {
     background-color: #ddd;
     padding: 3px;

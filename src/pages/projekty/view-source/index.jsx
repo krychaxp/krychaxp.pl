@@ -2,12 +2,14 @@ import React, { useState, useRef, useEffect } from "react";
 import { TextField, Button, Switch } from "@material-ui/core";
 import SEO from "src/seo";
 import { getFreeUrl } from "src/api";
+import { useLoading } from "src/hooks/useLoading";
 
 const ViewSource = () => {
   const [url, setUrl] = useState("");
   const [code, setCode] = useState("");
   const [resultData, setResultData] = useState("");
   const [prettify, setPrettify] = useState(true);
+  const { setLoading } = useLoading();
 
   const prettifyResult = () => {
     const isObject = typeof resultData === "object";
@@ -19,14 +21,14 @@ const ViewSource = () => {
   const handleSearch = async (e) => {
     if (e) e.preventDefault();
     try {
-      window.loading.open();
-      const validUrl = url.replace(/^https?:\/\//,'');
+      setLoading(true);
+      const validUrl = url.replace(/^https?:\/\//, "");
       const data = await getFreeUrl((prettify ? "pretty/" : "") + validUrl);
       setResultData(data);
     } catch (e) {
       setCode(typeof e === "string" ? e : "Nie udało się pobrać danych");
     } finally {
-      window.loading.close();
+      setLoading(false);
     }
   };
 

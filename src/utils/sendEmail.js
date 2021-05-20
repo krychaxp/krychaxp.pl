@@ -15,7 +15,7 @@ const mailOptions = {
     pass: process.env.MAIL_PASS,
   },
   tls: {
-    rejectUnauthorized: process.env.NODE_ENV === "production",
+    rejectUnauthorized: false,
   },
 };
 

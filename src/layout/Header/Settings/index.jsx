@@ -10,7 +10,7 @@ import {
   TextField,
 } from "@material-ui/core";
 import { GiResize } from "react-icons/gi";
-import { useApp } from "src/context/AppProvider";
+import { useApp } from "src/hooks/useApp";
 import { useFullscreen, useToggle } from "react-use";
 import useTranslation from "next-translate/useTranslation";
 import i18n from "i18n";

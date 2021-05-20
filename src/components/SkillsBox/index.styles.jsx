@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
 
 export const CardWrapper = styled.div`
-  width: 200px;
-  height: 250px;
+  width: 150px;
+  height: 200px;
   margin: 20px 10px;
   display: flex;
   flex-direction: column;
@@ -14,13 +14,13 @@ export const Icon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 60px;
+  font-size: 50px;
   flex: 1;
 `;
 
 export const Title = styled.div`
   height: 50px;
-  font-size: 20px;
+  font-size: 18px;
   color: #000;
   background-color: rgba(255, 255, 255, 0.5);
   display: flex;

@@ -12,6 +12,8 @@ import {
   TableContainer,
 } from "@material-ui/core";
 import styled from "styled-components";
+import { useAlert } from "src/hooks/useAlert";
+import { useLoading } from "src/hooks/useLoading";
 
 const Form = styled.form`
   display: flex;
@@ -33,10 +35,12 @@ const Box = () => {
   const router = useRouter();
   const [ipInfo, setIpInfo] = useState(null);
   const [currentIp, setCurrentIp] = useState(router.query.ip || "");
+  const { setAlert } = useAlert();
+  const { setLoading } = useLoading();
   const search = () => {
     (async () => {
       try {
-        window.loading.open();
+        setLoading(true);
         setIpInfo("");
         const userIp = await getUserIpJson(currentIp);
         router.push({
@@ -46,9 +50,9 @@ const Box = () => {
         setCurrentIp(userIp.query);
         setIpInfo(userIp);
       } catch (e) {
-        window.setAlert("error", "Nie udało się pobrać danych IP");
+        setAlert("error", "Nie udało się pobrać danych IP");
       } finally {
-        window.loading.close();
+        setLoading(false);
       }
     })();
   };

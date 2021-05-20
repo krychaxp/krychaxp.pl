@@ -10,7 +10,6 @@ export default nc().get(async (req, res) => {
   try {
     const requests = [
       process.env.IP_SOURCE_URL_1 + ip,
-      process.env.IP_SOURCE_URL_2 + ip,
       process.env.IP_SOURCE_URL_3 + ip,
     ].map((v) => axios.get(v));
     const obj = await Promise.all(requests);
@@ -18,6 +17,7 @@ export default nc().get(async (req, res) => {
     delete result.geoplugin_credit;
     return res.json(JSON.stringify(result, null, 2));
   } catch (error) {
+    console.log(error)
     res.status(500).end();
   }
 });

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Link from "next/link";
-import { useApp } from "src/context/AppProvider";
-import { menuItems } from "./menuItems";
+import { useApp } from "src/hooks/useApp";
+import { menuItems } from "src/utils/menuItems";
 import useTranslation from "next-translate/useTranslation";
 import { NavWrapper, ListItem } from "./index.styles";
 
