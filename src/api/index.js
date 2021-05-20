@@ -4,8 +4,7 @@ const send = (url, method = "get", options = {}, headers = {}) => {
   return new Promise(async (resolve, reject) => {
     try {
       if (!window.navigator.onLine) {
-        window.setAlert("error", "Brak dostępu do internetu!");
-        reject("Brak dostępu do internetu!");
+        reject({ error: "Brak dostępu do internetu!" });
       }
       const { data } = await axios[method](url, options, { headers });
       resolve(data);
@@ -13,10 +12,6 @@ const send = (url, method = "get", options = {}, headers = {}) => {
       reject(e);
     }
   });
-};
-
-export const API = {
-  git: "https://api.github.com",
 };
 
 export const getUrl = (url, options, method) => send(url, options, method);
@@ -29,7 +24,8 @@ export const getUserIpJson = (options = "") => send(`/api/ip/${options}`);
 
 export const sendEmail = (options) => send("/api/email", "post", options);
 
-export const getGithubUser = (nick) => send(`${API.git}/users/${nick}`);
+export const getGithubUser = (nick) =>
+  send(`https://api.github.com/users/${nick}`);
 
 export const getCoronaCountry = (country = "poland") =>
   send(`/api/coronavirus/country/${country}`);

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SEO from "src/seo";
 import { TextField, Button } from "@material-ui/core";
 import { useForm } from "react-hook-form";
+import { useAlert } from "src/hooks/useAlert";
 
 const defaultValues = {
   title: "Krychaxp website",
@@ -13,24 +14,28 @@ const Notifications = () => {
   const { register, handleSubmit, getValues, watch } = useForm({
     defaultValues,
   });
-  const [none, setNone] = useState("");
-  const handleChange = (e) => setNone(e.target.value);
+  const { setAlert } = useAlert();
+
   const onSubmit = async () => {
     const { title, icon, text } = getValues();
-    let res = await Notification.requestPermission();
-    if (res === "granted") {
-      const options = {
-        body: text,
-        icon: icon,
-      };
-      new Notification(title, options);
-    } else if (res == "default") {
-      window.setAlert("warning", "Musisz najpierw zezwolić na powiadomienia.");
-    } else if (res == "denied") {
-      window.setAlert(
-        "error",
-        "Masz wyłączone powiadomienia! Musisz to zmienić, aby korzystać z tej funkcji."
-      );
+    const res = await Notification.requestPermission();
+
+    switch (res) {
+      case "granted":
+        new Notification(title, {
+          body: text,
+          icon: icon,
+        });
+        break;
+      case "default":
+        setAlert("warning", "Musisz najpierw zezwolić na powiadomienia.");
+        break;
+      case "denied":
+        setAlert(
+          "error",
+          "Masz wyłączone powiadomienia! Musisz to zmienić, aby korzystać z tej funkcji."
+        );
+        break;
     }
   };
 
@@ -44,31 +49,28 @@ const Notifications = () => {
           label="Tytuł"
           name="title"
           inputRef={register}
-          onChange={handleChange}
         />
         <TextField
           variant="outlined"
           label="Ikonka"
           name="icon"
           inputRef={register}
-          onChange={handleChange}
         />
         <TextField
           variant="outlined"
           label="Treść"
           name="text"
           inputRef={register}
-          onChange={handleChange}
         />
         <Button variant="outlined" type="submit">
           Wyślij
         </Button>
       </Form>
       <Alert>
-        <Icon src={getValues("icon")} alt="icon" />
+        <Icon src={watch("icon")} alt="icon" />
         <TextWrapper>
-          <Title>{getValues("title")}</Title>
-          <Text>{getValues("text")}</Text>
+          <Title>{watch("title")}</Title>
+          <Text>{watch("text")}</Text>
         </TextWrapper>
       </Alert>
     </>

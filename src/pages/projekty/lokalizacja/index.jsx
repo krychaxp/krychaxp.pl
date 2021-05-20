@@ -13,7 +13,8 @@ import {
 } from "@material-ui/core";
 import { BiExit, BiShareAlt } from "react-icons/bi";
 import { RiFileCopyLine } from "react-icons/ri";
-import copy from "copy-to-clipboard";
+import { useCopyToClipboard } from "react-use";
+import { useAlert } from "src/hooks/useAlert";
 
 const getErrorInfo = (error) => {
   switch (error.code) {
@@ -64,6 +65,7 @@ const MapsLink = ({ link }) => {
 
 const CopyLink = ({ link }) => {
   const [open, setOpen] = useState(false);
+  const [_, copyToClipboard] = useCopyToClipboard();
 
   return (
     <ClickAwayListener onClickAway={() => setOpen(false)}>
@@ -74,7 +76,7 @@ const CopyLink = ({ link }) => {
           size="large"
           onClick={() => {
             setOpen(true);
-            copy(link);
+            copyToClipboard(link);
           }}
         >
           Kopiuj link do Google maps &nbsp;
@@ -123,16 +125,19 @@ const ShareLink = ({ link }) => {
 const ONP = () => {
   const [coords, setCoords] = useState(null);
   const [link, setLink] = useState("");
+  const { setAlert } = useAlert();
+
   const handleClick = () => {
     navigator.geolocation.getCurrentPosition(
       (res) => {
         setCoords(res.coords);
       },
       (error) => {
-        window.setAlert("error", getErrorInfo(error));
+        setAlert("error", getErrorInfo(error));
       }
     );
   };
+
   useEffect(() => {
     if (coords) {
       setLink(
@@ -142,6 +147,7 @@ const ONP = () => {
       );
     }
   }, [coords]);
+  
   return (
     <>
       <SEO title="Sprawdź swoją lokalizacje" />

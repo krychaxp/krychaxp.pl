@@ -34,7 +34,7 @@ export const MainWrapper = styled.div`
   align-items: stretch;
   flex-direction: column;
   text-align: left;
-  color: #555;
+  color: var(--dark-to-light);
   flex: 1;
   & > div {
     border-top: 1px solid #ddd;
@@ -74,7 +74,7 @@ export const FlexCenter = styled.div`
 `;
 
 export const RepoName = styled.a`
-  color: rgba(0, 98, 255, 0.849);
+  color: var(--blue-to-darker);
   font-size: 20px;
   font-weight: bold;
   margin: 5px 0;

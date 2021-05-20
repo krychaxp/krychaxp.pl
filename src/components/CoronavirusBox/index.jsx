@@ -11,6 +11,7 @@ import {
   TableData,
   periodArray,
 } from "./others";
+import { useAlert } from "src/hooks/useAlert";
 
 export const CoronavirusBox = () => {
   const [coronavirus, setCoronavirus] = useState(null);
@@ -18,6 +19,7 @@ export const CoronavirusBox = () => {
   const [series, setSeries] = useState([]);
   const [activeCountry, setActiveCountry] = useState("poland");
   const [countries, setCountries] = useState([]);
+  const { setAlert } = useAlert();
   const createChart = () => {
     if (!(coronavirus && series.length && countries.length)) return;
     exporting(Highcharts);
@@ -78,7 +80,7 @@ export const CoronavirusBox = () => {
         setCountries(val.sort((a, b) => (a.Country > b.Country ? 1 : -1)));
       })
       .catch((e) => {
-        window.setAlert(
+        setAlert(
           "error",
           `Nie udało się pobrać danych krajów. (Spróbuj odświeżyć stronę)`
         );
@@ -99,10 +101,7 @@ export const CoronavirusBox = () => {
         });
       })
       .catch((e) => {
-        window.setAlert(
-          "error",
-          `Nie udało się pobrać danych z ${activeCountry}.`
-        );
+        setAlert("error", `Nie udało się pobrać danych z ${activeCountry}.`);
       });
   };
   useEffect(updateDataByCoutry, [activeCountry]);

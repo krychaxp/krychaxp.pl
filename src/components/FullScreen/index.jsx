@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import screenfull from "screenfull";
+import { useFullscreen, useToggle } from "react-use";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -11,19 +11,16 @@ const Wrapper = styled.div`
   background-color: #000;
 `;
 
-const FullScreen = ({ info, children }) => {
+export const FullScreen = ({ showInfo, children }) => {
   const ref = useRef();
-  const handleClick = (e) => {
-    e.stopPropagation();
-    screenfull.toggle(ref.current);
-  };
+  const [show, toggle] = useToggle(false);
+  useFullscreen(ref, show);
   return (
     <>
-      {info && "Naciśnij podwójnie, aby wywołać fullscreen"}
-      <Wrapper ref={ref} onDoubleClick={handleClick}>
+      {showInfo && "Naciśnij podwójnie, aby wywołać fullscreen"}
+      <Wrapper ref={ref} onDoubleClick={toggle}>
         {children}
       </Wrapper>
     </>
   );
 };
-export default FullScreen;

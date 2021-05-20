@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import FullScreen from "src/components/FullScreen";
+import { FullScreen } from "src/components/FullScreen";
 import SEO from "src/seo";
 
 const Loading = () => {
@@ -36,7 +36,7 @@ const Loading = () => {
     <>
       <SEO title="Loading - tło" />
       <h1>Loading</h1>
-      <FullScreen info>
+      <FullScreen showInfo>
         <LoadingWrapper>
           <div>LOADING{dots}</div>
           <Loader>

@@ -3,10 +3,11 @@ import { useForm } from "react-hook-form";
 import ReCAPTCHA from "react-google-recaptcha";
 import { Button, TextField, InputAdornment } from "@material-ui/core";
 import { AccountCircle, Mail } from "@material-ui/icons";
+import styled from "styled-components";
 import { sendEmail } from "src/api";
 import SEO from "src/seo";
-import styled from "styled-components";
-
+import { useAlert } from "src/hooks/useAlert";
+import { useLoading } from "src/hooks/useLoading";
 const Form = styled.form`
   display: flex;
   justify-content: center;
@@ -125,20 +126,21 @@ const InputCaptcha = ({ register, setValue }) => {
 const Component = () => {
   const { register, handleSubmit, setValue, errors } = useForm();
   const [messageWasSend, setMessageWasSend] = useState(false);
-
+  const { setAlert } = useAlert();
+  const { setLoading } = useLoading();
   const onSubmit = async (data) => {
     if (messageWasSend) {
-      return window.setAlert("error", "Już wysłałeś wiadomość");
+      return setAlert("error", "Już wysłałeś wiadomość");
     }
     try {
-      window.loading.open();
+      setLoading(true);
       await send(data);
       setMessageWasSend(true);
-      window.setAlert("success", "Wiadomość została wysłana");
+      setAlert("success", "Wiadomość została wysłana");
     } catch (e) {
-      window.setAlert("error", "Wiadomość nie została wysłana");
+      setAlert("error", "Wiadomość nie została wysłana");
     } finally {
-      window.loading.close();
+      setLoading(false);
     }
   };
 
@@ -146,7 +148,7 @@ const Component = () => {
     const { recaptcha } = e;
     if (recaptcha) {
       const { message } = recaptcha;
-      window.setAlert("error", message);
+      setAlert("error", message);
     }
   };
 

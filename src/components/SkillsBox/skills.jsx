@@ -10,7 +10,6 @@ import {
   FaShieldAlt,
   FaSith,
   FaCubes,
-  FaKey,
   FaBootstrap,
   FaChartBar,
   FaSass,
@@ -36,7 +35,6 @@ import {
   GrDocker,
   GrGatsbyjs,
   GrGraphQl,
-  GrTestDesktop,
 } from "react-icons/gr";
 import { MdDevices } from "react-icons/md";
 import { BsTriangleHalf } from "react-icons/bs";
@@ -52,6 +50,8 @@ import {
   SiPostgresql,
   SiMicrosoftazure,
   SiRedux,
+  SiJest,
+  SiTailwindcss,
 } from "react-icons/si";
 
 const colors = ["#cc0000", "#ff9933", "#ffff00", "#00e600"];
@@ -73,7 +73,6 @@ export const skills = [
   [3, "Microsoft Office", <SiMicrosoftoffice />],
   [3, "ES6+", "{...}"],
   [3, "NPM", <FaNpm />],
-  [3, "JWT", <FaKey />],
   [3, "KISS", "KISS"],
   [3, "DRY", "DRY"],
   [3, "SEO", <GrOptimize />],
@@ -88,6 +87,7 @@ export const skills = [
   [2, "MySQL", <GrMysql />],
   [2, "Gatsby", <GrGatsbyjs />],
   [2, "Postgresql", <SiPostgresql />],
+  [2, "Redux", <SiRedux />],
   [1, "AWS", <FaAws />],
   [1, "GCP", <DiGoogleCloudPlatform />],
   [1, "WebSocket", <GiServerRack />],
@@ -100,8 +100,8 @@ export const skills = [
   [1, "Wordpress", <FaWordpressSimple />],
   [1, "C++", "C++"],
   [1, "Canvas / Gry", <FaEdit />],
-  [1, "Redux", <SiRedux />],
   [1, "Linux", <FaLinux />],
+  [1, "Jest", <SiJest />],
   [0, "Azure", <SiMicrosoftazure />],
   [0, "Bootstrap", <FaBootstrap />],
   [0, "Docker", <GrDocker />],
@@ -109,7 +109,7 @@ export const skills = [
   [0, "Angular", <FaAngular />],
   [0, "Vue", <FaVuejs />],
   [0, "Webpack", <GiCube />],
-  [0, "Tests", <GrTestDesktop />],
+  [0, "Tailwindcss", <SiTailwindcss />],
 ].map(([rating, name, icon]) => ({
   name,
   icon,

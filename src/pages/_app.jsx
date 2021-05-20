@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { Layout } from "src/layout";
-import { AppProvider } from "src/context/AppProvider";
+import { AppProvider } from "src/hooks/useApp";
+import { AlertProvider } from "src/hooks/useAlert";
+import { LoadingProvider } from "src/hooks/useLoading";
 import { GlobalStyle } from "../styles";
 
 const MyApp = ({ Component, pageProps, router }) => {
@@ -23,12 +25,17 @@ const MyApp = ({ Component, pageProps, router }) => {
       "color:#3dbeff;background:#222"
     );
   }, []);
+
   return (
     <AppProvider>
-      <Layout>
-        <GlobalStyle />
-        <Component {...pageProps} />
-      </Layout>
+      <AlertProvider>
+        <LoadingProvider>
+          <Layout>
+            <GlobalStyle />
+            <Component {...pageProps} />
+          </Layout>
+        </LoadingProvider>
+      </AlertProvider>
     </AppProvider>
   );
 };

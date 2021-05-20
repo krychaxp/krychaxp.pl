@@ -54,14 +54,14 @@ export const websites = [
     stack: getStack(1, 8, 3, 4, 5),
     descr: "",
   },
-  {
-    link: `https://swq.netlify.app/${utm}`,
-    name: "swq.netlify.app (Hackyeah task)",
-    img: "/img/img_src/swq.png",
-    position: "Frontend",
-    stack: getStack(1, 8, 3, 4, 5),
-    descr: "",
-  },
+  // {
+  //   link: `https://swq.netlify.app/${utm}`,
+  //   name: "swq.netlify.app (Hackyeah task)",
+  //   img: "/img/img_src/swq.png",
+  //   position: "Frontend",
+  //   stack: getStack(1, 8, 3, 4, 5),
+  //   descr: "",
+  // },
   {
     link: `https://mmorpg.org.pl/${utm}`,
     name: "mmorpg.org.pl",

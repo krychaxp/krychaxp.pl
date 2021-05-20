@@ -4,7 +4,7 @@ export const NavWrapper = styled.nav`
   z-index: 90;
   background-color: var(--white-to-dark);
   position: fixed;
-  top: 80px;
+  top: var(--header-height);
   left: 100%;
   bottom: 0;
   width: min(100vw, 500px);
@@ -18,12 +18,10 @@ export const NavWrapper = styled.nav`
   &::-webkit-scrollbar {
     display: none;
   }
-  ${({ navIsOpen }) =>
-    navIsOpen &&
-    css`
-      transform: translateX(-100%);
-      box-shadow: 5px 0 15px 5px var(--black-to-white);
-    `}
+  &[data-open="true"] {
+    transform: translateX(-100%);
+    box-shadow: 5px 0 15px 5px var(--black-to-white);
+  }
 `;
 
 export const ListItem = styled.a`

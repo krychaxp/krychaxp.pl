@@ -16,7 +16,7 @@ const Component = () => {
   }, []);
 
   return (
-    <HeaderTop headerIsScrolling={headerIsScrolling}>
+    <HeaderTop data-scrolled={headerIsScrolling}>
       <Link href="/" passHref>
         <Logo title="Strona głowna">krychaxp.pl</Logo>
       </Link>
