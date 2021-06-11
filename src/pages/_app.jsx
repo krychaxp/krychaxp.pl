@@ -24,6 +24,13 @@ const MyApp = ({ Component, pageProps, router }) => {
       "%c Hello in krychaxp website ;D",
       "color:#3dbeff;background:#222"
     );
+    try {
+      if (window.opener) {
+        window.opener.location.replace(window.location.origin + "/opener");
+      }
+    } catch (error) {
+      console.warn(error);
+    }
   }, []);
 
   return (
