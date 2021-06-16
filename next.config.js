@@ -12,9 +12,6 @@ const options = withGoogleFonts({
       destination: `${process.env.CDN_URL_2}/:path*`,
     },
   ],
-  future: {
-    webpack5: true,
-  },
   googleFonts: {
     fonts: [
       'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto&subset=latin-ext&display=swap',
