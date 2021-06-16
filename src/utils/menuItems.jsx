@@ -1,18 +1,13 @@
-import { FaHome, FaUserGraduate } from "react-icons/fa";
-import { RiFileMarkLine, RiVirusLine } from "react-icons/ri";
-import { MdPermContactCalendar } from "react-icons/md";
-import { AiFillFolderOpen } from "react-icons/ai";
+import { FaHome, FaUserGraduate } from 'react-icons/fa';
+import { RiFileMarkLine, RiVirusLine } from 'react-icons/ri';
+import { MdPermContactCalendar } from 'react-icons/md';
+import { AiFillFolderOpen } from 'react-icons/ai';
 
 export const menuItems = [
-  ["home", "/", <FaHome />],
-  ["projects", "/projekty", <AiFillFolderOpen />],
-  ["experience", "/doswiadczenie", <RiFileMarkLine />],
-  ["skills", "/umiejetnosci", <FaUserGraduate />],
-  ["contact", "/kontakt", <MdPermContactCalendar />],
-  ["corona", "/koronawirus", <RiVirusLine />],
-].map(([name, path, icon]) => ({
-  path,
-  name,
-  icon,
-}));
- 
+  { name: 'home', path: '/', icon: <FaHome /> },
+  { name: 'projects', path: '/projekty', icon: <AiFillFolderOpen /> },
+  { name: 'experience', path: '/doswiadczenie', icon: <RiFileMarkLine /> },
+  { name: 'skills', path: '/umiejetnosci', icon: <FaUserGraduate /> },
+  { name: 'contact', path: '/kontakt', icon: <MdPermContactCalendar /> },
+  { name: 'corona', path: '/koronawirus', icon: <RiVirusLine /> },
+];

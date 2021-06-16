@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import SEO from "src/seo";
-import { TextField, MenuItem } from "@material-ui/core";
-import styled from "styled-components";
-import { conversion } from "src/utils";
+import React, { useState, useEffect } from 'react';
+import SEO from 'src/seo';
+import { TextField, MenuItem } from '@material-ui/core';
+import styled from 'styled-components';
+import { conversion } from 'src/utils';
 
 const Wrapper = styled.div`
   padding: 5px;
@@ -11,18 +11,18 @@ const Wrapper = styled.div`
 
 const numbers = Array(35)
   .fill()
-  .map((v, i) => i + 2);
+  .map((_, i) => i + 2);
 
 const Conversion = () => {
   const [values, setValues] = useState({
-    value1: "",
-    value2: "",
+    value1: '',
+    value2: '',
     system1: 10,
     system2: 10,
     checking: true,
   });
   const handleInput = (e) => {
-    const name = e.target.name;
+    const { name } = e.target;
     const val = e.target.value;
     setValues((v) => ({ ...v, [name]: val, checking: true }));
   };
@@ -31,9 +31,9 @@ const Conversion = () => {
     setValues((v) => {
       const { value1, system1, system2 } = v;
       const newValue1 = value1
-        .split("")
+        .split('')
         .filter((v) => !isNaN(parseInt(v, system1)))
-        .join("");
+        .join('');
       const newValue2 = conversion(newValue1, system1, system2);
       return { ...v, value1: newValue1, value2: newValue2, checking: false };
     });
@@ -53,7 +53,9 @@ const Conversion = () => {
           SelectProps={{ MenuProps: { disableScrollLock: true } }}
         >
           {numbers.map((v, i) => (
-            <MenuItem key={i} value={v} children={v} />
+            <MenuItem key={i} value={v}>
+              {v}
+            </MenuItem>
           ))}
         </TextField>
         <TextField
@@ -76,7 +78,9 @@ const Conversion = () => {
           helperText="Wybierz system na jaki chcesz zamieniać"
         >
           {numbers.map((v, i) => (
-            <MenuItem key={i} value={v} children={v} />
+            <MenuItem key={i} value={v}>
+              {v}
+            </MenuItem>
           ))}
         </TextField>
         <TextField

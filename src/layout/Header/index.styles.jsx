@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from 'styled-components';
 
 export const Buttons = styled.div`
   display: flex;
@@ -32,7 +32,7 @@ export const HeaderTop = styled.header`
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  &[data-scrolled="true"] {
+  &[data-scrolled='true'] {
     box-shadow: 0 -10px 20px 5px var(--black-to-white);
   }
 `;
@@ -49,13 +49,7 @@ export const Logo = styled.a`
   transition: background-color 0.3s;
   height: 100%;
   padding: 0 35px 0 15px;
-  clip-path: polygon(
-    0 0,
-    0 100%,
-    calc(100% - 30px) 100%,
-    100% 50%,
-    calc(100% - 30px) 0
-  );
+  clip-path: polygon(0 0, 0 100%, calc(100% - 30px) 100%, 100% 50%, calc(100% - 30px) 0);
   background-color: rgba(255, 255, 255, 0.1);
   &:hover,
   &:focus {

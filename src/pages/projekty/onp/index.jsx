@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import SEO from "src/seo";
-import { TextField } from "@material-ui/core";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import { AiFillInfoCircle } from "react-icons/ai";
-import styled from "styled-components";
-import { calculateONP } from "src/utils";
+import React, { useState } from 'react';
+import SEO from 'src/seo';
+import { TextField } from '@material-ui/core';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import { AiFillInfoCircle } from 'react-icons/ai';
+import styled from 'styled-components';
+import { calculateONP } from 'src/utils';
 
 const OnpWrapper = styled.div`
   display: flex;
@@ -45,9 +45,9 @@ const ResultWrapper = ({ items }) => {
 };
 
 const ONP = () => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   const handleInput = (e) => {
-    const val = (e.target.value.match(/[0-9*\-+/ ]/g) || []).join("");
+    const val = (e.target.value.match(/[0-9*\-+/ ]/g) || []).join('');
     setValue(val);
   };
   return (
@@ -58,7 +58,7 @@ const ONP = () => {
         label="Wpisz [ 0-9 , - , + , * , / ]"
         onChange={handleInput}
         value={value}
-        style={{ maxWidth: "400px" }}
+        style={{ maxWidth: '400px' }}
         fullWidth
         helperText="Wpisuj znaki z odstępem spacji"
         InputProps={{
@@ -68,7 +68,7 @@ const ONP = () => {
                 href="https://pl.wikipedia.org/wiki/Odwrotna_notacja_polska"
                 target="_blank"
                 rel="nofollow noreferrer"
-                style={{ fontSize: "25px" }}
+                style={{ fontSize: '25px' }}
               >
                 <AiFillInfoCircle />
               </a>
@@ -83,6 +83,4 @@ const ONP = () => {
 
 export default ONP;
 
-export const getStaticProps = () => {
-  return { props: {} };
-};
+export const getStaticProps = () => ({ props: {} });

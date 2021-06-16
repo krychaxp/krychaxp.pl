@@ -1,10 +1,10 @@
-const nodemailer = require("nodemailer");
+const nodemailer = require('nodemailer');
 
 const message = {
   from: process.env.MAIL_USER,
   to: process.env.MAIL_USER_TO,
-  subject: "Message from krychaxp.pl",
-  text: "Simple text",
+  subject: 'Message from krychaxp.pl',
+  text: 'Simple text',
 };
 
 const mailOptions = {
@@ -19,15 +19,9 @@ const mailOptions = {
   },
 };
 
-export const sendEmail = (options) => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      const transport = nodemailer.createTransport(mailOptions);
-      const fullMessage = { ...message, ...options };
-      const info = await transport.sendMail(fullMessage);
-      resolve(info);
-    } catch (e) {
-      reject(e);
-    }
-  });
+export const sendEmail = async (options) => {
+  const transport = nodemailer.createTransport(mailOptions);
+  const fullMessage = { ...message, ...options };
+  const info = await transport.sendMail(fullMessage);
+  return info;
 };

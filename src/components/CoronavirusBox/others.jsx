@@ -1,22 +1,16 @@
-import {
-  ChartWrapper,
-  Chart,
-  Selectors,
-  TableWrapper,
-  NewTable,
-} from "./index.styles";
+import { ChartWrapper, Chart, Selectors, TableWrapper, NewTable } from './index.styles';
 
-import { TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
-import { Skeleton } from "@material-ui/lab";
-import { TextField, MenuItem } from "@material-ui/core";
-import { Fab, Tooltip } from "@material-ui/core";
-import { FiDownload } from "react-icons/fi";
+import { TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
+import { Skeleton } from '@material-ui/lab';
+import { TextField, MenuItem } from '@material-ui/core';
+import { Fab, Tooltip } from '@material-ui/core';
+import { FiDownload } from 'react-icons/fi';
 
 export const periodArray = [
-  { id: -7, period: "Ostatni tydzień" },
-  { id: -30, period: "Ostatni miesiąć" },
-  { id: -60, period: "Ostatnie 2 miesiące" },
-  { id: 0, period: "Od początku" },
+  { id: -7, period: 'Ostatni tydzień' },
+  { id: -30, period: 'Ostatni miesiąć' },
+  { id: -60, period: 'Ostatnie 2 miesiące' },
+  { id: 0, period: 'Od początku' },
 ];
 
 export const Loading = () => (
@@ -27,7 +21,7 @@ export const Loading = () => (
     </Chart>
     <Skeleton variant="rect" width={400} height={35} />
     <Skeleton variant="rect" width={200} height={25} />
-    <Skeleton variant="rect" width={"100%"} height={300} />
+    <Skeleton variant="rect" width={'100%'} height={300} />
     <Selectors>
       {Array(7)
         .fill()
@@ -40,22 +34,19 @@ export const Loading = () => (
 
 export const CopyButton = ({ series, coronavirus, period, activeCountry }) => {
   const exportFileHandle = () => {
-    let text = [];
-    text.push(series.map(({ name }) => name).join(";"));
+    const text = [];
+    text.push(series.map(({ name }) => name).join(';'));
     text.push(
       coronavirus.date
         .slice(period)
-        .map((v, i) => [v, ...series.map(({ data }) => data[i])].join(";"))
+        .map((v, i) => [v, ...series.map(({ data }) => data[i])].join(';'))
         .reverse()
-        .join("\n")
+        .join('\n')
     );
-    return text.join("\n");
+    return text.join('\n');
   };
   return (
-    <a
-      href={`data:,${exportFileHandle()}`}
-      download={`coronavirus_in_${activeCountry}.txt`}
-    >
+    <a href={`data:,${exportFileHandle()}`} download={`coronavirus_in_${activeCountry}.txt`}>
       <Tooltip title="Pobierz" arrow>
         <Fab color="primary" aria-label="download" size="medium">
           <FiDownload fontSize="25px" />
@@ -65,11 +56,7 @@ export const CopyButton = ({ series, coronavirus, period, activeCountry }) => {
   );
 };
 
-export const SelectCountry = ({
-  activeCountry,
-  setActiveCountry,
-  countries,
-}) => (
+export const SelectCountry = ({ activeCountry, setActiveCountry, countries }) => (
   <TextField
     label="Wybierz kraj"
     select
@@ -127,7 +114,7 @@ export const TableData = ({ series, coronavirus, period }) => (
             <TableRow key={v}>
               <TableCell>{v}</TableCell>
               {series.map(({ data }, j) => (
-                <TableCell key={j + "a" + i} align="right">
+                <TableCell key={`${j}a${i}`} align="right">
                   {data[i]}
                 </TableCell>
               ))}

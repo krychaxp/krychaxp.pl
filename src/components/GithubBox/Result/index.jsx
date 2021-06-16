@@ -1,7 +1,8 @@
-import { Avatar } from "@material-ui/core";
-import { AvatarGroup } from "@material-ui/lab";
-import { FaCity } from "react-icons/fa";
-import { MdLocationOn, MdExitToApp } from "react-icons/md";
+/* eslint camelcase:"off" */
+import { Avatar } from '@material-ui/core';
+import { AvatarGroup } from '@material-ui/lab';
+import { FaCity } from 'react-icons/fa';
+import { MdLocationOn, MdExitToApp } from 'react-icons/md';
 import {
   ResultWrapper,
   UserWrapper,
@@ -11,18 +12,12 @@ import {
   RepoName,
   Description,
   FlexCenter,
-} from "../index.styles";
+} from '../index.styles';
 
 const SingleImgAvatar = ({ followersUser, i }) => {
   const { login, id } = followersUser[i];
   if (i < 6 && followersUser[i]) {
-    return (
-      <Avatar
-        key={i}
-        alt={login}
-        src={`https://avatars2.githubusercontent.com/u/${id}`}
-      />
-    );
+    return <Avatar key={i} alt={login} src={`https://avatars2.githubusercontent.com/u/${id}`} />;
   }
   return <Avatar key={i} />;
 };
@@ -32,21 +27,19 @@ const FollowersBar = ({ followers, followersUser }) => {
   return (
     <AvatarGroup max={6}>
       {list.map((v, i) => (
-        <SingleImgAvatar i={i} followersUser={followersUser} />
+        <SingleImgAvatar i={i} key={i} followersUser={followersUser} />
       ))}
     </AvatarGroup>
   );
 };
 
 export const Result = ({ userData }) => {
-  if (!(userData?.length === 3)) return userData || "";
-
   const [
     {
       avatar_url,
-      html_url,
+      html_url: profileUrl,
       location,
-      name,
+      name: profileName,
       followers,
       public_repos,
       company,
@@ -59,17 +52,12 @@ export const Result = ({ userData }) => {
   return (
     <ResultWrapper>
       <UserWrapper>
-        <AvatarLogo src={avatar_url} alt={name} />
+        <AvatarLogo src={avatar_url} alt={profileName} />
         <br />
-        <h2>{name}</h2>
+        <h2>{profileName}</h2>
         <br />
         {bio}
-        <FlexCenter
-          as="a"
-          href={html_url}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
+        <FlexCenter as="a" href={profileUrl} rel="noopener noreferrer" target="_blank">
           Check profile on GitHub <MdExitToApp />
         </FlexCenter>
         <h2>Followers ({followers})</h2>
@@ -81,28 +69,12 @@ export const Result = ({ userData }) => {
       </UserWrapper>
       <MainWrapper>
         {repositoriesUser.map(
-          ({
-            html_url,
-            name,
-            description,
-            created_at,
-            updated_at,
-            language,
-            license,
-            homepage,
-          }) => {
-            const days = Math.round(
-              (Date.now() - new Date(updated_at).getTime()) / 86400000
-            );
+          ({ html_url, name, description, created_at, updated_at, language, license, homepage }) => {
+            const days = Math.round((Date.now() - new Date(updated_at).getTime()) / 86400000);
             const create = new Date(created_at).toLocaleDateString();
             return (
               <div key={name}>
-                <RepoName
-                  href={html_url}
-                  rel="noopener"
-                  title={name}
-                  target="_blank"
-                >
+                <RepoName href={html_url} rel="noopener" title={name} target="_blank">
                   {name}
                 </RepoName>
                 <Description>
@@ -110,12 +82,7 @@ export const Result = ({ userData }) => {
                   {homepage && (
                     <div>
                       Homepage:
-                      <a
-                        href={homepage}
-                        rel="noopener noreferrer"
-                        title={homepage}
-                        target="_blank"
-                      >
+                      <a href={homepage} rel="noopener noreferrer" title={homepage} target="_blank">
                         {homepage}
                       </a>
                     </div>
@@ -145,9 +112,7 @@ const AvatarLocation = ({ location }) => {
   if (!location) return null;
   return (
     <div>
-      <MdLocationOn />
-      {` `}
-      {location}
+      <MdLocationOn /> {location}
     </div>
   );
 };
@@ -156,9 +121,7 @@ const AvatarCompany = ({ company }) => {
   if (!company) return null;
   return (
     <div>
-      <FaCity />
-      {` `}
-      {company}
+      <FaCity /> {company}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from 'styled-components';
 
 export const CardWrapper = styled.div`
   width: 150px;
@@ -36,16 +36,6 @@ export const SkillsWrapper = styled.div`
   align-items: center;
   flex-flow: row wrap;
   color: black;
-`;
-
-export const RatingWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 15px;
-  padding: 10px;
-  box-shadow: 0 0 5px -1px var(--black-to-white);
-  opacity: ${({ hasStars }) => +hasStars};
 `;
 
 export const ImgWrapper = styled.a`

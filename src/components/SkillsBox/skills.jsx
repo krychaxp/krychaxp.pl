@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint react/jsx-key:"off" */
+import React from 'react';
 import {
   FaReact,
   FaCss3Alt,
@@ -20,27 +21,18 @@ import {
   FaAngular,
   FaVuejs,
   FaLinux,
-} from "react-icons/fa";
-import {
-  DiJavascript1,
-  DiMongodb,
-  DiGoogleCloudPlatform,
-} from "react-icons/di";
-import { AiFillHtml5, AiOutlineCloudServer } from "react-icons/ai";
-import { IoLogoVercel, IoSpeedometerOutline } from "react-icons/io5";
-import {
-  GrMysql,
-  GrOptimize,
-  GrServices,
-  GrDocker,
-  GrGatsbyjs,
-  GrGraphQl,
-} from "react-icons/gr";
-import { MdDevices } from "react-icons/md";
-import { BsTriangleHalf } from "react-icons/bs";
-import { GiCube, GiServerRack } from "react-icons/gi";
+} from 'react-icons/fa';
+import { DiJavascript1, DiMongodb, DiGoogleCloudPlatform } from 'react-icons/di';
+import { AiFillHtml5, AiOutlineCloudServer } from 'react-icons/ai';
+import { IoLogoVercel, IoSpeedometerOutline } from 'react-icons/io5';
+import { GrMysql, GrOptimize, GrServices, GrDocker, GrGatsbyjs, GrGraphQl } from 'react-icons/gr';
+import { MdDevices } from 'react-icons/md';
+import { BsTriangleHalf } from 'react-icons/bs';
+import { GiCube, GiServerRack } from 'react-icons/gi';
 import {
   SiNetlify,
+  SiPrettier,
+  SiEslint,
   SiMicrosoftoffice,
   SiTypescript,
   SiOpslevel,
@@ -52,64 +44,66 @@ import {
   SiRedux,
   SiJest,
   SiTailwindcss,
-} from "react-icons/si";
+} from 'react-icons/si';
 
-const colors = ["#cc0000", "#ff9933", "#ffff00", "#00e600"];
+const colors = ['#cc0000', '#ff9933', '#ffff00', '#00e600'];
 
 export const skills = [
-  [3, "HTML 5", <AiFillHtml5 />],
-  [3, "CSS 3", <FaCss3Alt />],
-  [3, "Javascript", <DiJavascript1 />],
-  [3, "React", <FaReact />],
-  [3, "RWD", <MdDevices />],
-  [3, "Next.js", <SiNextDotJs />],
-  [3, "Styled Components", <SiStyledComponents />],
-  [3, "SCSS", <FaSass />],
-  [3, "Prisma", <BsTriangleHalf />],
-  [3, "NodeJS/Express", <FaNode />],
-  [3, "REST API", <AiOutlineCloudServer />],
-  [3, "Netlify", <SiNetlify />],
-  [3, "Vercel", <IoLogoVercel />],
-  [3, "Microsoft Office", <SiMicrosoftoffice />],
-  [3, "ES6+", "{...}"],
-  [3, "NPM", <FaNpm />],
-  [3, "KISS", "KISS"],
-  [3, "DRY", "DRY"],
-  [3, "SEO", <GrOptimize />],
-  [3, "Performance", <IoSpeedometerOutline />],
-  [2, "MongoDB", <DiMongodb />],
-  [2, "MaterialUI", <SiMaterialUi />],
-  [2, "Accessibility", <FaUniversalAccess />],
-  [2, "DevOps", <SiOpslevel />],
-  [2, "Animacje", <FaSith />],
-  [2, "Git/Github", <FaGithub />],
-  [2, "Charts (Highcharts)", <FaChartBar />],
-  [2, "MySQL", <GrMysql />],
-  [2, "Gatsby", <GrGatsbyjs />],
-  [2, "Postgresql", <SiPostgresql />],
-  [2, "Redux", <SiRedux />],
-  [1, "AWS", <FaAws />],
-  [1, "GCP", <DiGoogleCloudPlatform />],
-  [1, "WebSocket", <GiServerRack />],
-  [1, "PHP", <FaPhp />],
-  [1, "TypeScript", <SiTypescript />],
-  [1, "GraphQL", <GrGraphQl />],
-  [1, "Figma", <FaFigma />],
-  [1, "PWA", <FaShieldAlt />],
-  [1, "Service Workers", <GrServices />],
-  [1, "Wordpress", <FaWordpressSimple />],
-  [1, "C++", "C++"],
-  [1, "Canvas / Gry", <FaEdit />],
-  [1, "Linux", <FaLinux />],
-  [1, "Jest", <SiJest />],
-  [0, "Azure", <SiMicrosoftazure />],
-  [0, "Bootstrap", <FaBootstrap />],
-  [0, "Docker", <GrDocker />],
-  [0, "Three.js", <FaCubes />],
-  [0, "Angular", <FaAngular />],
-  [0, "Vue", <FaVuejs />],
-  [0, "Webpack", <GiCube />],
-  [0, "Tailwindcss", <SiTailwindcss />],
+  [3, 'HTML 5', <AiFillHtml5 />],
+  [3, 'CSS 3', <FaCss3Alt />],
+  [3, 'Javascript', <DiJavascript1 />],
+  [3, 'React', <FaReact />],
+  [3, 'RWD', <MdDevices />],
+  [3, 'Next.js', <SiNextDotJs />],
+  [3, 'Styled Components', <SiStyledComponents />],
+  [3, 'SCSS', <FaSass />],
+  [3, 'Prisma', <BsTriangleHalf />],
+  [3, 'NodeJS/Express', <FaNode />],
+  [3, 'REST API', <AiOutlineCloudServer />],
+  [3, 'Netlify', <SiNetlify />],
+  [3, 'Vercel', <IoLogoVercel />],
+  [3, 'Microsoft Office', <SiMicrosoftoffice />],
+  [3, 'ES6+', '{...}'],
+  [3, 'NPM', <FaNpm />],
+  [3, 'KISS', 'KISS'],
+  [3, 'DRY', 'DRY'],
+  [3, 'SEO', <GrOptimize />],
+  [3, 'Performance', <IoSpeedometerOutline />],
+  [3, 'Prettier', <SiPrettier />],
+  [2, 'Eslint', <SiEslint />],
+  [2, 'MongoDB', <DiMongodb />],
+  [2, 'MaterialUI', <SiMaterialUi />],
+  [2, 'Accessibility', <FaUniversalAccess />],
+  [2, 'DevOps', <SiOpslevel />],
+  [2, 'Animacje', <FaSith />],
+  [2, 'Git/Github', <FaGithub />],
+  [2, 'Charts (Highcharts)', <FaChartBar />],
+  [2, 'MySQL', <GrMysql />],
+  [2, 'Gatsby', <GrGatsbyjs />],
+  [2, 'Postgresql', <SiPostgresql />],
+  [2, 'Redux', <SiRedux />],
+  [1, 'AWS', <FaAws />],
+  [1, 'GCP', <DiGoogleCloudPlatform />],
+  [1, 'WebSocket', <GiServerRack />],
+  [1, 'PHP', <FaPhp />],
+  [1, 'TypeScript', <SiTypescript />],
+  [1, 'GraphQL', <GrGraphQl />],
+  [1, 'Figma', <FaFigma />],
+  [1, 'PWA', <FaShieldAlt />],
+  [1, 'Service Workers', <GrServices />],
+  [1, 'Wordpress', <FaWordpressSimple />],
+  [1, 'C++', 'C++'],
+  [1, 'Canvas / Gry', <FaEdit />],
+  [1, 'Linux', <FaLinux />],
+  [1, 'Jest', <SiJest />],
+  [0, 'Azure', <SiMicrosoftazure />],
+  [0, 'Bootstrap', <FaBootstrap />],
+  [0, 'Docker', <GrDocker />],
+  [0, 'Three.js', <FaCubes />],
+  [0, 'Angular', <FaAngular />],
+  [0, 'Vue', <FaVuejs />],
+  [0, 'Webpack', <GiCube />],
+  [0, 'Tailwindcss', <SiTailwindcss />],
 ].map(([rating, name, icon]) => ({
   name,
   icon,

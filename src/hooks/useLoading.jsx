@@ -1,6 +1,6 @@
-import { useState, useContext, createContext } from "react";
-import { CircularProgress } from "@material-ui/core";
-import styled from "styled-components";
+import { useState, useContext, createContext } from 'react';
+import { CircularProgress } from '@material-ui/core';
+import styled from 'styled-components';
 
 const Box = styled.div`
   position: absolute;

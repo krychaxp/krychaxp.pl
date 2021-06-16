@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import { FullScreen } from "src/components/FullScreen";
-import SEO from "src/seo";
-import styled, { keyframes } from "styled-components";
+import { useState, useEffect } from 'react';
+import { FullScreen } from 'src/components/FullScreen';
+import SEO from 'src/seo';
+import styled, { keyframes } from 'styled-components';
 
 const rainbow = keyframes`
   0%{ background-color: #ff0000; }

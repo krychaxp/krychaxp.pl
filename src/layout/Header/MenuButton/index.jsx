@@ -1,6 +1,6 @@
-import styled, { css } from "styled-components";
-import { useApp } from "src/hooks/useApp";
-import { IconButton } from "@material-ui/core";
+import styled, { css } from 'styled-components';
+import { useApp } from 'src/hooks/useApp';
+import { IconButton } from '@material-ui/core';
 
 const Burger = styled.div`
   position: relative;
@@ -48,10 +48,7 @@ const Burger = styled.div`
 export const MenuButton = () => {
   const { navIsOpen, setNavIsOpen } = useApp();
   return (
-    <IconButton
-      onClick={(e) => setNavIsOpen(!navIsOpen)}
-      aria-label="Open Settings"
-    >
+    <IconButton onClick={() => setNavIsOpen(!navIsOpen)} aria-label="Open Settings">
       <Burger navIsOpen={navIsOpen}>
         <span />
         <span />

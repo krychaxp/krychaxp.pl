@@ -1,15 +1,15 @@
 {
-    "title": "Strona główna",
-    "h1": "Witaj",
-    "hi": "Cześć, nazywam się Krystian i jestem Fullstack Developerem.",
-    "create": "Od 2018 roku uczę się oraz tworze strony internetowe.",
-    "my": "Mój stack technologiczny to Javascript, SCSS, React, Next.js i Node.js.",
-    "in": "W 2020 roku ukończyłem",
-    "inp": "w Poznaniu",
-    "stu": "a aktualnie studiuje na",
-    "pp": "Politechnice Poznańskiej",
-    "nk": "na kierunku",
-    "inf": "Informatyka",
-    "where": "gdzie jestem jednym z członków",
-    "more": "Więcej informacji, możesz znaleść w zakładce po prawej stronie."
+  "title": "Strona główna",
+  "h1": "Witaj",
+  "hi": "Cześć, nazywam się Krystian i jestem Fullstack Developerem.",
+  "create": "Od 2018 roku uczę się oraz tworze strony internetowe.",
+  "my": "Mój stack technologiczny to Javascript, SCSS, React, Next.js i Node.js.",
+  "in": "W 2020 roku ukończyłem",
+  "inp": "w Poznaniu",
+  "stu": "a aktualnie studiuje na",
+  "pp": "Politechnice Poznańskiej",
+  "nk": "na kierunku",
+  "inf": "Informatyka",
+  "where": "gdzie jestem jednym z członków",
+  "more": "Więcej informacji, możesz znaleść w zakładce po prawej stronie."
 }

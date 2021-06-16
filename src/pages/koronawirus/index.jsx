@@ -1,10 +1,10 @@
-import SEO from "src/seo";
-import useTranslation from "next-translate/useTranslation";
-import { CoronavirusBox } from "src/components/CoronavirusBox";
+import SEO from 'src/seo';
+import useTranslation from 'next-translate/useTranslation';
+import { CoronavirusBox } from 'src/components/CoronavirusBox';
 
 const Component = () => {
-  const { t } = useTranslation("menu");
-  const title = t("corona");
+  const { t } = useTranslation('menu');
+  const title = t('corona');
   return (
     <>
       <SEO

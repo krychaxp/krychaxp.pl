@@ -1,47 +1,45 @@
 export const calculateONP = (b) => {
   const calc = (n1, s, n2) => {
     switch (s) {
-      case "+":
+      case '+':
         return +n1 + +n2;
-      case "-":
+      case '-':
         return +n1 - +n2;
-      case "*":
+      case '*':
         return +n1 * +n2;
-      case "/":
+      case '/':
         return +n1 / +n2;
       default:
-        return "";
+        return '';
     }
   };
   const wynik = [];
-  let a = b
+  const a = b
     .trim()
-    .split(/\s+/)
+    .split(/\s+/u)
     .filter((v) => v);
   wynik.push([...a]);
   if (a.length < 3) {
-    wynik.push(["Za mało znaków"]);
+    wynik.push(['Za mało znaków']);
   } else if (a.length % 2 === 0) {
-    wynik.push(["Ciąg powinien mieć nieparzystą liczbę znaków!"]);
+    wynik.push(['Ciąg powinien mieć nieparzystą liczbę znaków!']);
   } else {
     do {
-      const index = a.findIndex((v) => /^[+*/-]$/.test(v));
+      const index = a.findIndex((v) => /^[+*/-]$/u.test(v));
       if (index <= 1) {
-        wynik.push(["Błąd zapisu!"]);
+        wynik.push(['Błąd zapisu!']);
         break;
       }
-      let [b, c, d] = a.splice(index - 2, 3);
-      a.splice(index - 2, 0, calc(b, d, c));
+      const [f, c, d] = a.splice(index - 2, 3);
+      a.splice(index - 2, 0, calc(f, d, c));
       wynik.push([...a]);
     } while (a.length > 1);
     if (a.length === 1) {
-      wynik.push(["Podana formuła jest poprawna!"]);
+      wynik.push(['Podana formuła jest poprawna!']);
     }
   }
 
   return wynik;
 };
 
-export const conversion = (a = "", b = 10, c = 10) => {
-  return (parseInt(a, b) || "").toString(c) || "Złe wartości";
-};
+export const conversion = (a = '', b = 10, c = 10) => (parseInt(a, b) || '').toString(c) || 'Złe wartości';

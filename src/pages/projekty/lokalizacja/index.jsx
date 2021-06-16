@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import SEO from "src/seo";
+import React, { useState, useEffect } from 'react';
+import SEO from 'src/seo';
 import {
   Button,
   Table,
@@ -10,62 +10,52 @@ import {
   Paper,
   Tooltip,
   ClickAwayListener,
-} from "@material-ui/core";
-import { BiExit, BiShareAlt } from "react-icons/bi";
-import { RiFileCopyLine } from "react-icons/ri";
-import { useCopyToClipboard } from "react-use";
-import { useAlert } from "src/hooks/useAlert";
+} from '@material-ui/core';
+import { BiExit, BiShareAlt } from 'react-icons/bi';
+import { RiFileCopyLine } from 'react-icons/ri';
+import { useCopyToClipboard } from 'react-use';
+import { useAlert } from 'src/hooks/useAlert';
 
 const getErrorInfo = (error) => {
   switch (error.code) {
     case error.PERMISSION_DENIED:
-      return "Odmowa dostępu do lokalizacji.";
+      return 'Odmowa dostępu do lokalizacji.';
     case error.POSITION_UNAVAILABLE:
-      return "Pobranie lokalizacji jest niemożliwe.";
+      return 'Pobranie lokalizacji jest niemożliwe.';
     case error.TIMEOUT:
-      return "Upłynął limit czasu żądania pobrania lokalizacji użytkownika.";
+      return 'Upłynął limit czasu żądania pobrania lokalizacji użytkownika.';
     default:
-      return "Error";
+      return 'Error';
   }
 };
 
-const CoordsTable = ({ coords }) => {
-  return (
-    <TableContainer component={Paper}>
-      <Table aria-label="simple table">
-        <TableBody>
-          <TableRow>
-            <TableCell>latitude</TableCell>
-            <TableCell>{coords.latitude.toFixed(9)}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>longitude</TableCell>
-            <TableCell>{coords.longitude.toFixed(9)}</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    </TableContainer>
-  );
-};
+const CoordsTable = ({ coords }) => (
+  <TableContainer component={Paper}>
+    <Table aria-label="simple table">
+      <TableBody>
+        <TableRow>
+          <TableCell>latitude</TableCell>
+          <TableCell>{coords.latitude.toFixed(9)}</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>longitude</TableCell>
+          <TableCell>{coords.longitude.toFixed(9)}</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  </TableContainer>
+);
 
-const MapsLink = ({ link }) => {
-  return (
-    <Button
-      href={link}
-      target="_blank"
-      variant="outlined"
-      color="primary"
-      size="large"
-    >
-      Sprawdź w Google maps &nbsp;
-      <BiExit fontSize="30px" />
-    </Button>
-  );
-};
+const MapsLink = ({ link }) => (
+  <Button href={link} target="_blank" variant="outlined" color="primary" size="large">
+    Sprawdź w Google maps &nbsp;
+    <BiExit fontSize="30px" />
+  </Button>
+);
 
 const CopyLink = ({ link }) => {
   const [open, setOpen] = useState(false);
-  const [_, copyToClipboard] = useCopyToClipboard();
+  const [, copyToClipboard] = useCopyToClipboard();
 
   return (
     <ClickAwayListener onClickAway={() => setOpen(false)}>
@@ -92,8 +82,8 @@ const ShareLink = ({ link }) => {
   const handleClick = () => {
     if (navigator.share) {
       const shareData = {
-        title: "Moja lokalizacja",
-        text: "Sprawdź gdzie jestem",
+        title: 'Moja lokalizacja',
+        text: 'Sprawdź gdzie jestem',
         url: link,
       };
       navigator.share(shareData);
@@ -103,17 +93,8 @@ const ShareLink = ({ link }) => {
   };
   return (
     <ClickAwayListener onClickAway={() => setOpen(false)}>
-      <Tooltip
-        title="Ta funkcja nie działa na tym urządzeniu"
-        placement="bottom"
-        open={open}
-      >
-        <Button
-          variant="outlined"
-          color="primary"
-          size="large"
-          onClick={handleClick}
-        >
+      <Tooltip title="Ta funkcja nie działa na tym urządzeniu" placement="bottom" open={open}>
+        <Button variant="outlined" color="primary" size="large" onClick={handleClick}>
           Udostępnij swoją lokalizację &nbsp;
           <BiShareAlt fontSize="28px" />
         </Button>
@@ -124,7 +105,7 @@ const ShareLink = ({ link }) => {
 
 const ONP = () => {
   const [coords, setCoords] = useState(null);
-  const [link, setLink] = useState("");
+  const [link, setLink] = useState('');
   const { setAlert } = useAlert();
 
   const handleClick = () => {
@@ -133,21 +114,17 @@ const ONP = () => {
         setCoords(res.coords);
       },
       (error) => {
-        setAlert("error", getErrorInfo(error));
+        setAlert('error', getErrorInfo(error));
       }
     );
   };
 
   useEffect(() => {
     if (coords) {
-      setLink(
-        `https://www.google.com/maps/?q=${coords.latitude.toFixed(
-          9
-        )},${coords.longitude.toFixed(9)}`
-      );
+      setLink(`https://www.google.com/maps/?q=${coords.latitude.toFixed(9)},${coords.longitude.toFixed(9)}`);
     }
   }, [coords]);
-  
+
   return (
     <>
       <SEO title="Sprawdź swoją lokalizacje" />
@@ -157,7 +134,7 @@ const ONP = () => {
       </Button>
       <br />
       {coords && (
-        <div style={{ color: "white !important" }}>
+        <div style={{ color: 'white !important' }}>
           <CoordsTable coords={coords} />
           <br />
           <MapsLink link={link} />

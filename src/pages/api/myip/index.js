@@ -1,5 +1,5 @@
-import nc from "next-connect";
-import { useIp } from "src/middlewares/useIp";
+import nc from 'next-connect';
+import { useIp } from 'src/middlewares/useIp';
 
 export default nc()
   .use(useIp)

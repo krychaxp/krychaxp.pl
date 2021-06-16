@@ -1,10 +1,11 @@
-import { useEffect, useState, useMemo } from "react";
-import { FullScreen } from "src/components/FullScreen";
-import SEO from "src/seo";
+/* eslint no-alert: "off"*/
+import { useEffect, useState } from 'react';
+import { FullScreen } from 'src/components/FullScreen';
+import SEO from 'src/seo';
 
 const Loading = () => {
   const [time, setTime] = useState(100);
-  const [dots, setDots] = useState("");
+  const [dots, setDots] = useState('');
   const [long, setLong] = useState(0);
 
   useEffect(() => {
@@ -17,13 +18,13 @@ const Loading = () => {
   }, [long, time]);
 
   useEffect(() => {
-    const userTime = window.prompt("Podaj całkowity czas ładowania (w sek.)");
+    const userTime = window.prompt('Podaj całkowity czas ładowania (w sek.)');
     setTime(userTime);
   }, []);
 
   useEffect(() => {
     const createDots = () => {
-      const newDots = "".padEnd((dots.length + 1) % 4, ".");
+      const newDots = ''.padEnd((dots.length + 1) % 4, '.');
       setDots(newDots);
     };
     const timer = setTimeout(createDots, 1000);
@@ -52,9 +53,9 @@ const Loading = () => {
 
 export default Loading;
 
-/*********8 */
+/** *******8 */
 
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes } from 'styled-components';
 
 const key1 = keyframes`
     0%,
@@ -104,14 +105,7 @@ const Loader = styled.div`
 `;
 
 const LineBar = styled.div`
-  background-image: linear-gradient(
-    -45deg,
-    #060 0,
-    #0c0 25%,
-    #060 50%,
-    #0c0 75%,
-    #060 100%
-  );
+  background-image: linear-gradient(-45deg, #060 0, #0c0 25%, #060 50%, #0c0 75%, #060 100%);
   background-size: 40px 40px;
   animation: ${key2} 1s linear infinite;
   box-sizing: border-box;

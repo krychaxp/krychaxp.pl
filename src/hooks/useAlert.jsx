@@ -1,6 +1,6 @@
-import { useState, useContext, createContext } from "react";
-import { Snackbar } from "@material-ui/core";
-import { Alert } from "@material-ui/lab";
+import { useState, useContext, createContext } from 'react';
+import { Snackbar } from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
 
 const AlertContext = createContext();
 
@@ -10,7 +10,7 @@ export const AlertProvider = ({ children }) => {
 
   const remove = () => setOpen(false);
 
-  const setAlert = (type = "info", text = "some text") => {
+  const setAlert = (type = 'info', text = 'some text') => {
     setValue({ type, text });
     setOpen(true);
   };

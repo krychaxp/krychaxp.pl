@@ -1,5 +1,5 @@
-import React from "react";
-import SEO from "src/seo";
+import React from 'react';
+import SEO from 'src/seo';
 
 const Exp = () => (
   <>

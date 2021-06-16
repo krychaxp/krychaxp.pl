@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
-import { useFullscreen, useToggle } from "react-use";
-import styled from "styled-components";
+import React, { useRef } from 'react';
+import { useFullscreen, useToggle } from 'react-use';
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
   border: none;
@@ -17,7 +17,7 @@ export const FullScreen = ({ showInfo, children }) => {
   useFullscreen(ref, show);
   return (
     <>
-      {showInfo && "Naciśnij podwójnie, aby wywołać fullscreen"}
+      {showInfo && 'Naciśnij podwójnie, aby wywołać fullscreen'}
       <Wrapper ref={ref} onDoubleClick={toggle}>
         {children}
       </Wrapper>

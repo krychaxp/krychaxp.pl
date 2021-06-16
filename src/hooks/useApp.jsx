@@ -1,23 +1,17 @@
-import React, {
-  useState,
-  useContext,
-  createContext,
-  useMemo,
-  useEffect,
-} from "react";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { useLocalStorage } from "react-use";
+import React, { useState, useContext, createContext, useMemo, useEffect } from 'react';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { useLocalStorage } from 'react-use';
 
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const [darkMode, setDarkMode] = useLocalStorage("dark-mode", false);
+  const [darkMode, setDarkMode] = useLocalStorage('dark-mode', false);
   const [navIsOpen, setNavIsOpen] = useState(false);
   const darkTheme = useMemo(
     () =>
       createMuiTheme({
         palette: {
-          type: darkMode ? "dark" : "light",
+          type: darkMode ? 'dark' : 'light',
         },
       }),
     [darkMode]
@@ -25,9 +19,9 @@ export const AppProvider = ({ children }) => {
 
   useEffect(() => {
     if (darkMode) {
-      document.body.classList.add("dark-mode");
+      document.body.classList.add('dark-mode');
     } else {
-      document.body.classList.remove("dark-mode");
+      document.body.classList.remove('dark-mode');
     }
   }, [darkMode]);
 

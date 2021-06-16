@@ -1,2 +1,2 @@
-import { Projects } from "src/components/Projects";
+import { Projects } from 'src/components/Projects';
 export default Projects;

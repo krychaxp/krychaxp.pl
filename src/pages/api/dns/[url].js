@@ -1,7 +1,7 @@
-import nc from "next-connect";
-import dnsInfo from "dns-info";
+import nc from 'next-connect';
+import dnsInfo from 'dns-info';
 
-export default nc().get(async (req, res) => {
+export default nc().get((req, res) => {
   const { url } = req.query;
   const options = {
     domain: url,
@@ -12,6 +12,6 @@ export default nc().get(async (req, res) => {
       res.json(JSON.stringify(info, null, 2));
     })
     .catch((e) => {
-      res.status(400).json({ error: e });
+      res.status(408).json({ error: e });
     });
 });

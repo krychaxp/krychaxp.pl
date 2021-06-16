@@ -1,7 +1,7 @@
-import nc from "next-connect";
-import { useIp } from "src/middlewares/useIp";
-import axios from "axios";
-import { sendEmail } from "src/utils/sendEmail";
+import nc from 'next-connect';
+import { useIp } from 'src/middlewares/useIp';
+import axios from 'axios';
+import { sendEmail } from 'src/utils/sendEmail';
 
 export default nc()
   .use(useIp)
@@ -13,7 +13,7 @@ export default nc()
       const response = await axios.get(url);
       if (response.data.success !== true) return res.status(403).end();
       const options = {
-        subject: "Wiadomość ze strony krychaxp.pl",
+        subject: 'Wiadomość ze strony krychaxp.pl',
         text: `Imię i nazwisko: ${name}
 Email: ${email}
 Treść wiadomości:
@@ -23,7 +23,7 @@ ${text}
 -----------------------------------------------------------
 Time:${new Date()}
 IP:${req.clientIp}
-UserAgent:${req.headers["user-agent"]}
+UserAgent:${req.headers['user-agent']}
   `,
       };
       await sendEmail(options);

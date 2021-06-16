@@ -1,7 +1,7 @@
-import useTranslation from "next-translate/useTranslation";
-import React from "react";
-import SEO from "src/seo";
-import styled from "styled-components";
+import useTranslation from 'next-translate/useTranslation';
+import React from 'react';
+import SEO from 'src/seo';
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
   max-width: 800px;
@@ -9,13 +9,13 @@ const Wrapper = styled.div`
 `;
 
 export default function Component() {
-  const { t } = useTranslation("policy");
-  const title = t("title");
+  const { t } = useTranslation('policy');
+  const title = t('title');
   return (
     <>
       <SEO title={title} />
       <h1>{title}</h1>
-      <Wrapper dangerouslySetInnerHTML={{ __html: t("text") }}>
+      <Wrapper dangerouslySetInnerHTML={{ __html: t('text') }}>
         {/* <b>Ciasteczka (ang. cookies)</b> – niewielkie informacje tekstowe,
         wysyłane przez serwer WWW i zapisywane po stronie użytkownika (zazwyczaj
         na twardym dysku). Domyślne parametry ciasteczek pozwalają na odczytanie

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Table } from "@material-ui/core";
+import styled from 'styled-components';
+import { Table } from '@material-ui/core';
 
 export const ChartWrapper = styled.div`
   text-align: center;
@@ -40,7 +40,7 @@ export const NewTable = styled(Table)`
   thead tr {
     th {
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         bottom: 0;
         left: 0;

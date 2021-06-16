@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { AiFillLinkedin, AiOutlineGithub } from "react-icons/ai";
-import { FaFacebookSquare } from "react-icons/fa";
-import { FiPlusSquare, FiMail } from "react-icons/fi";
-import { author, utm } from "config";
-import styled from "styled-components";
+import React, { useEffect, useState } from 'react';
+import { AiFillLinkedin, AiOutlineGithub } from 'react-icons/ai';
+import { FaFacebookSquare } from 'react-icons/fa';
+import { FiPlusSquare, FiMail } from 'react-icons/fi';
+import { author, utm } from 'config';
+import styled from 'styled-components';
 
 const { contacts, activeEmail } = author;
 const { facebook, github, linkedin } = contacts;
 
 const icons = [
-  ["Facebook", facebook, <FaFacebookSquare />],
-  ["Github", github, <AiOutlineGithub />],
-  ["Linkedin", linkedin, <AiFillLinkedin />],
+  { title: 'Facebook', href: facebook, icon: <FaFacebookSquare /> },
+  { title: 'Github', href: github, icon: <AiOutlineGithub /> },
+  { title: 'Linkedin', href: linkedin, icon: <AiFillLinkedin /> },
 ];
 
 const IconsBox = styled.div`
@@ -35,7 +35,7 @@ const IconConatiner = styled.a`
   background-color: transparent;
   border-radius: 5px;
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     top: -130%;
     left: 130%;
@@ -46,7 +46,7 @@ const IconConatiner = styled.a`
     background-color: rgba(255, 255, 255, 0.4);
   }
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     bottom: 5%;
     left: 50%;
@@ -68,15 +68,15 @@ const Icons = () => {
   const handleInstallApp = () => {
     event.prompt();
     event.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === "accepted") {
-        console.log("Użytkownik zainstalował aplikacje");
+      if (choiceResult.outcome === 'accepted') {
+        console.log('Użytkownik zainstalował aplikacje');
       }
       setEvent(null);
     });
   };
 
   useEffect(() => {
-    window.addEventListener("beforeinstallprompt", function (e) {
+    window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       setEvent(e);
     });
@@ -88,13 +88,13 @@ const Icons = () => {
 
   return (
     <IconsBox>
-      {icons.map(([title, href, icon]) => (
+      {icons.map(({ title, href, icon }) => (
         <IconConatiner
           key={title}
           href={href + utm}
           target="_blank"
           rel="noreferrer noopener"
-          title={title + " Krychaxp"}
+          title={`${title} Krychaxp`}
         >
           {icon}
         </IconConatiner>
@@ -103,11 +103,7 @@ const Icons = () => {
         <FiMail />
       </IconConatiner>
       {event && (
-        <IconConatiner
-          href="#intall-app"
-          onClick={handleInstallApp}
-          title="Dodaj aplikacje"
-        >
+        <IconConatiner href="#intall-app" onClick={handleInstallApp} title="Dodaj aplikacje">
           <FiPlusSquare />
         </IconConatiner>
       )}

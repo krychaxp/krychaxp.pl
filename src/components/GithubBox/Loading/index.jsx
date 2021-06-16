@@ -1,10 +1,5 @@
-import { Skeleton } from "@material-ui/lab";
-import {
-  ResultWrapper,
-  UserWrapper,
-  MainWrapper,
-  Categories,
-} from "../index.styles";
+import { Skeleton } from '@material-ui/lab';
+import { ResultWrapper, UserWrapper, MainWrapper, Categories } from '../index.styles';
 
 const OneRepo = () => {
   const rand1 = Math.floor(Math.random() * 100) + 100;
@@ -24,8 +19,7 @@ const OneRepo = () => {
   );
 };
 
-export const Loading = ({ isLoading }) => {
-  if (!isLoading) return null;
+export const Loading = () => {
   const list = Array(6).fill();
   return (
     <ResultWrapper>
@@ -41,7 +35,7 @@ export const Loading = ({ isLoading }) => {
       </UserWrapper>
       <MainWrapper>
         {list.map((v, i) => (
-          <OneRepo key={i}/>
+          <OneRepo key={i} />
         ))}
       </MainWrapper>
     </ResultWrapper>

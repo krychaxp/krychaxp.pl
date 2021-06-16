@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from "react";
-import SEO from "src/seo";
-import { TextField, Button, MenuItem } from "@material-ui/core";
+import React, { useState, useEffect } from 'react';
+import SEO from 'src/seo';
+import { TextField, Button, MenuItem } from '@material-ui/core';
 
 export default function index() {
-  const [text, setText] = useState("");
-  const [speaker, setSpeaker] = useState({ name: "" });
+  const [text, setText] = useState('');
+  const [speaker, setSpeaker] = useState({ name: '' });
   const [voices, setVoices] = useState([]);
   const handleClick = (e) => {
     e.preventDefault();
-    let utterance = new SpeechSynthesisUtterance(text);
+    const utterance = new SpeechSynthesisUtterance(text);
     utterance.voice = speaker;
     window.speechSynthesis.speak(utterance);
   };
   const handleChange = (e) => {
-    setSpeaker(voices.find((v) => v.name == e.target.value));
+    setSpeaker(voices.find((v) => v.name === e.target.value));
   };
   useEffect(() => {
     window.speechSynthesis.onvoiceschanged = () => {
-      let vo = window.speechSynthesis.getVoices();
+      const vo = window.speechSynthesis.getVoices();
       setVoices(vo);
       setSpeaker(vo[0]);
     };
@@ -56,7 +56,7 @@ export default function index() {
         <Button color="primary" type="submit" variant="contained">
           Puść głos
         </Button>
-        {voices.length == 0 && "Brak dostępnych głosów na tym urządzeniu."}
+        {voices.length === 0 && 'Brak dostępnych głosów na tym urządzeniu.'}
       </form>
     </>
   );

@@ -1,19 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { getUserIpJson } from "src/api";
-import SEO from "src/seo";
-import { useRouter } from "next/router";
-import {
-  TextField,
-  Button,
-  TableRow,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-} from "@material-ui/core";
-import styled from "styled-components";
-import { useAlert } from "src/hooks/useAlert";
-import { useLoading } from "src/hooks/useLoading";
+import React, { useEffect, useState } from 'react';
+import { getUserIpJson } from 'src/api';
+import SEO from 'src/seo';
+import { useRouter } from 'next/router';
+import { TextField, Button, TableRow, Table, TableBody, TableCell, TableContainer } from '@material-ui/core';
+import styled from 'styled-components';
+import { useAlert } from 'src/hooks/useAlert';
+import { useLoading } from 'src/hooks/useLoading';
 
 const Form = styled.form`
   display: flex;
@@ -32,35 +24,37 @@ const TableWrapper = styled.div`
 `;
 
 const Box = () => {
-  const router = useRouter();
   const [ipInfo, setIpInfo] = useState(null);
-  const [currentIp, setCurrentIp] = useState(router.query.ip || "");
+  const [inputValue, setInputValue] = useState('');
   const { setAlert } = useAlert();
   const { setLoading } = useLoading();
-  const search = () => {
+  const router = useRouter();
+  const { ip = '' } = router.query;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    router.push({ query: { ip: inputValue } });
+  };
+
+  useEffect(() => {
+    setInputValue(ip);
     (async () => {
       try {
         setLoading(true);
-        setIpInfo("");
-        const userIp = await getUserIpJson(currentIp);
-        router.push({
-          pathname: "/projekty/ip",
-          query: { ip: userIp.query },
-        });
-        setCurrentIp(userIp.query);
-        setIpInfo(userIp);
+        setIpInfo('');
+        const userIpData = await getUserIpJson(ip);
+        if (!ip) {
+          router.push({ query: { ip: userIpData.query } });
+        }
+        setIpInfo(userIpData);
       } catch (e) {
-        setAlert("error", "Nie udało się pobrać danych IP");
+        setAlert('error', 'Nie udało się pobrać danych IP');
       } finally {
         setLoading(false);
       }
     })();
-  };
-  useEffect(search, []);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    search();
-  };
+  }, [ip]);
+
   return (
     <>
       <SEO title="Sprawdź swoje dano o IP" />
@@ -70,19 +64,14 @@ const Box = () => {
           label="Wpisz ip"
           variant="outlined"
           name="ip"
-          value={currentIp}
+          value={inputValue}
           InputLabelProps={{
             shrink: true,
           }}
-          onChange={(e) => setCurrentIp(e.target.value)}
+          onChange={(e) => setInputValue(e.target.value)}
           margin="normal"
         />
-        <Button
-          variant="contained"
-          type="submit"
-          margin="normal"
-          color="primary"
-        >
+        <Button variant="contained" type="submit" margin="normal" color="primary">
           szukaj
         </Button>
       </Form>

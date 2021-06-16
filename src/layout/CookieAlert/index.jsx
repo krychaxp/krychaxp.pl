@@ -1,9 +1,9 @@
-import { useState, useEffect, memo } from "react";
-import { Button } from "@material-ui/core";
-import Link from "next/link";
-import styled from "styled-components";
-import useTranslation from "next-translate/useTranslation";
-const cname = "cookie_accepted";
+import { useState, useEffect, memo } from 'react';
+import { Button } from '@material-ui/core';
+import Link from 'next/link';
+import styled from 'styled-components';
+import useTranslation from 'next-translate/useTranslation';
+const cname = 'cookie_accepted';
 
 const CookieBox = styled.div`
   position: fixed;
@@ -22,15 +22,15 @@ const CookieBox = styled.div`
   }
 `;
 
-export const CookieAlert = memo(() => {
+const Component = () => {
   const [open, setOpen] = useState(false);
-  const { t } = useTranslation("common");
-  const title = t("cookie-title");
+  const { t } = useTranslation('common');
+  const title = t('cookie-title');
   useEffect(() => {
-    setOpen(localStorage[cname] != "true");
+    setOpen(localStorage[cname] != 'true');
   }, []);
   const handleClose = () => {
-    localStorage[cname] = "true";
+    localStorage[cname] = 'true';
     setOpen(false);
   };
   if (!open) {
@@ -38,7 +38,7 @@ export const CookieAlert = memo(() => {
   }
   return (
     <CookieBox>
-      {t("cookie-enter")}{" "}
+      {t('cookie-enter')}{' '}
       <Link href="/polityka-prywatnosci">
         <a title={title}>
           <b>{title}</b>
@@ -50,4 +50,6 @@ export const CookieAlert = memo(() => {
       </Button>
     </CookieBox>
   );
-});
+};
+
+export const CookieAlert = memo(Component);

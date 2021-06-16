@@ -1,9 +1,9 @@
-import { useMemo } from "react";
-import { Button } from "@material-ui/core";
-import { useRouter } from "next/router";
-import styled from "styled-components";
-import useTranslation from "next-translate/useTranslation";
-import Link from "next/link";
+import { useMemo } from 'react';
+import { Button } from '@material-ui/core';
+import { useRouter } from 'next/router';
+import styled from 'styled-components';
+import useTranslation from 'next-translate/useTranslation';
+import Link from 'next/link';
 
 const MainBox = styled.main`
   min-height: 90vh;
@@ -27,19 +27,16 @@ const BackButton = styled.a`
 `;
 
 export const Main = ({ children }) => {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation('common');
   const router = useRouter();
-  const renderButton = useMemo(
-    () => /^\/projekty\/.+/.test(router.pathname),
-    [router]
-  );
+  const renderButton = useMemo(() => /^\/projekty\/.+/.test(router.pathname), [router]);
   return (
     <MainBox>
       {renderButton && (
         <Link href="/projekty" passHref>
           <BackButton title="Projekty">
             <Button variant="contained" color="primary">
-              {t("back")}
+              {t('back')}
             </Button>
           </BackButton>
         </Link>

@@ -1,87 +1,8 @@
-import React, { useState } from "react";
-import SEO from "src/seo";
-import { TextField, Button } from "@material-ui/core";
-import { useForm } from "react-hook-form";
-import { useAlert } from "src/hooks/useAlert";
-
-const defaultValues = {
-  title: "Krychaxp website",
-  icon: "/favicon.ico",
-  text: "Some text ...",
-};
-
-const Notifications = () => {
-  const { register, handleSubmit, getValues, watch } = useForm({
-    defaultValues,
-  });
-  const { setAlert } = useAlert();
-
-  const onSubmit = async () => {
-    const { title, icon, text } = getValues();
-    const res = await Notification.requestPermission();
-
-    switch (res) {
-      case "granted":
-        new Notification(title, {
-          body: text,
-          icon: icon,
-        });
-        break;
-      case "default":
-        setAlert("warning", "Musisz najpierw zezwolić na powiadomienia.");
-        break;
-      case "denied":
-        setAlert(
-          "error",
-          "Masz wyłączone powiadomienia! Musisz to zmienić, aby korzystać z tej funkcji."
-        );
-        break;
-    }
-  };
-
-  return (
-    <>
-      <SEO title="Powiadomienia" />
-      <h1>Powiadomienia</h1>
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        <TextField
-          variant="outlined"
-          label="Tytuł"
-          name="title"
-          inputRef={register}
-        />
-        <TextField
-          variant="outlined"
-          label="Ikonka"
-          name="icon"
-          inputRef={register}
-        />
-        <TextField
-          variant="outlined"
-          label="Treść"
-          name="text"
-          inputRef={register}
-        />
-        <Button variant="outlined" type="submit">
-          Wyślij
-        </Button>
-      </Form>
-      <Alert>
-        <Icon src={watch("icon")} alt="icon" />
-        <TextWrapper>
-          <Title>{watch("title")}</Title>
-          <Text>{watch("text")}</Text>
-        </TextWrapper>
-      </Alert>
-    </>
-  );
-};
-
-export default Notifications;
-
-/********** */
-
-import styled from "styled-components";
+import SEO from 'src/seo';
+import { TextField, Button } from '@material-ui/core';
+import { useForm } from 'react-hook-form';
+import { useAlert } from 'src/hooks/useAlert';
+import styled from 'styled-components';
 
 const Form = styled.form`
   display: flex;
@@ -125,3 +46,64 @@ const Text = styled.div`
   color: #aaa;
   font-size: 17px;
 `;
+
+const defaultValues = {
+  title: 'Krychaxp website',
+  icon: '/favicon.ico',
+  text: 'Some text ...',
+};
+
+const Notifications = () => {
+  const { register, handleSubmit, getValues, watch } = useForm({
+    defaultValues,
+  });
+  const { setAlert } = useAlert();
+
+  const onSubmit = async () => {
+    const { title, icon, text } = getValues();
+    const res = await Notification.requestPermission();
+
+    switch (res) {
+      case 'granted': {
+        new Notification(title, {
+          body: text,
+          icon,
+        });
+        break;
+      }
+      case 'default':
+        setAlert('warning', 'Musisz najpierw zezwolić na powiadomienia.');
+        break;
+      case 'denied':
+        setAlert('error', 'Masz wyłączone powiadomienia! Musisz to zmienić, aby korzystać z tej funkcji.');
+        break;
+      default:
+    }
+  };
+
+  return (
+    <>
+      <SEO title="Powiadomienia" />
+      <h1>Powiadomienia</h1>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <TextField variant="outlined" label="Tytuł" name="title" inputRef={register} />
+        <TextField variant="outlined" label="Ikonka" name="icon" inputRef={register} />
+        <TextField variant="outlined" label="Treść" name="text" inputRef={register} />
+        <Button variant="outlined" type="submit">
+          Wyślij
+        </Button>
+      </Form>
+      <Alert>
+        <Icon src={watch('icon')} alt="icon" />
+        <TextWrapper>
+          <Title>{watch('title')}</Title>
+          <Text>{watch('text')}</Text>
+        </TextWrapper>
+      </Alert>
+    </>
+  );
+};
+
+export default Notifications;
+
+/** ******** */

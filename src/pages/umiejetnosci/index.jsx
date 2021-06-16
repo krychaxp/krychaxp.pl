@@ -1,11 +1,11 @@
-import React from "react";
-import SEO from "src/seo";
-import useTranslation from "next-translate/useTranslation";
-import { SkillsBox } from "src/components/SkillsBox";
+import React from 'react';
+import SEO from 'src/seo';
+import useTranslation from 'next-translate/useTranslation';
+import { SkillsBox } from 'src/components/SkillsBox';
 
 const Skills = () => {
-  const { t } = useTranslation("menu");
-  const title = t("skills");
+  const { t } = useTranslation('menu');
+  const title = t('skills');
   return (
     <>
       <SEO
@@ -21,6 +21,4 @@ const Skills = () => {
 
 export default Skills;
 
-export const getStaticProps = () => {
-  return { props: {} };
-};
+export const getStaticProps = () => ({ props: {} });

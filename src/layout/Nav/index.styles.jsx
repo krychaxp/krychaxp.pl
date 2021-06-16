@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from 'styled-components';
 
 export const NavWrapper = styled.nav`
   z-index: 90;
@@ -18,7 +18,7 @@ export const NavWrapper = styled.nav`
   &::-webkit-scrollbar {
     display: none;
   }
-  &[data-open="true"] {
+  &[data-open='true'] {
     transform: translateX(-100%);
     box-shadow: 5px 0 15px 5px var(--black-to-white);
   }
@@ -43,7 +43,7 @@ export const ListItem = styled.a`
   }
   &::before,
   &::after {
-    content: "";
+    content: '';
     height: 50%;
     width: 100%;
     position: absolute;
