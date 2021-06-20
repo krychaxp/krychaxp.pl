@@ -20,7 +20,7 @@
       "type": "image/x-icon"
     },
     {
-      "src": "/img/avatar-mini.png",
+      "src": "/img/avatar-mini-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

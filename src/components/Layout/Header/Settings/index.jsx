@@ -1,14 +1,12 @@
 import { useRef } from 'react';
 import { DialogTitle, Dialog, MenuItem, DialogActions, Button, Switch, IconButton, TextField } from '@material-ui/core';
 import { GiResize } from 'react-icons/gi';
-import { useApp } from 'src/hooks/useApp';
 import { useFullscreen, useToggle } from 'react-use';
 import useTranslation from 'next-translate/useTranslation';
-import i18n from 'i18n';
+import { locales } from 'i18n';
 import styled from 'styled-components';
 import setLanguage from 'next-translate/setLanguage';
-
-const { locales } = i18n;
+import { useApp } from 'src/hooks/useApp';
 
 const Content = styled.div`
   display: flex;
@@ -20,14 +18,15 @@ const Content = styled.div`
 `;
 
 export const Settings = ({ settingsIsOpen, setSettingsIsOpen }) => {
+  const [show, toggle] = useToggle(false);
   const { t, lang } = useTranslation('common');
-  const { setDarkMode, darkMode } = useApp();
+  const { theme, setTheme } = useApp();
+
   const handleCloseSettings = () => setSettingsIsOpen(false);
-  const handleMode = (e) => setDarkMode(e.target.checked);
+  const handleMode = (e) => setTheme(e.target.checked ? 'dark' : 'light');
   const handleChangeLanguage = async (e) => await setLanguage(e.target.value);
 
   const ref = useRef(typeof window !== 'undefined' && window.document.querySelector('body'));
-  const [show, toggle] = useToggle(false);
 
   useFullscreen(ref, show);
 
@@ -35,7 +34,7 @@ export const Settings = ({ settingsIsOpen, setSettingsIsOpen }) => {
     <Dialog id="settings" onClose={handleCloseSettings} open={settingsIsOpen} maxWidth="sm" fullWidth={true}>
       <DialogTitle>{t('settings')}</DialogTitle>
       <Content>
-        Dark mode: <Switch color="primary" checked={darkMode} onChange={handleMode} />
+        Dark mode: <Switch color="primary" checked={theme === 'dark'} onChange={handleMode} />
       </Content>
       <Content>
         FullScreen:{' '}

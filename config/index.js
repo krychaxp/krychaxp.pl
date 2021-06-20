@@ -33,10 +33,12 @@ module.exports = {
     },
   },
   utm: '?utm_source=krychaxp.pl&utm_content=link',
-  preconnect: ['https//www.googletagmanager.com', 'https//www.google-analytics.com'],
   scripts: [
     `https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_TRACKING_ID}`,
     'https://www.google-analytics.com/analytics.js',
   ],
-  isProduction: process.env.NODE_ENV === 'production',
+  preconnect: ['https//www.googletagmanager.com', 'https//www.google-analytics.com', 'https://fonts.gstatic.com'],
+  fonts: [
+    'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto&subset=latin-ext&display=swap',
+  ],
 };

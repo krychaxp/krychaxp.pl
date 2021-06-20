@@ -1,9 +1,7 @@
-import React from 'react';
 import Head from 'next/head';
 import config from 'config';
 import { useRouter } from 'next/router';
 import { locales } from 'i18n';
-import { GoogleFonts } from 'nextjs-google-fonts/GoogleFonts';
 
 const setKeywords = (...arg) => {
   const arr = arg
@@ -30,8 +28,8 @@ const SEO = ({ description = '', title, image, children, keywords = [] }) => {
   return (
     <Head>
       <title>{metaTitle}</title>
-      <meta httpEquiv="x-ua-compatible" content="ie=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
       <meta name="author" content={config.author.name} />
       <meta name="theme-color" content="#0059b2" />
       <meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION} />
@@ -53,25 +51,11 @@ const SEO = ({ description = '', title, image, children, keywords = [] }) => {
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={metaImage} />
 
-      <link rel="shortcut icon" href="/favicon.ico" />
-      <link rel="icon" href="/favicon.ico" />
-      <link rel="apple-touch-icon" href="/favicon.ico" />
-      <link rel="robots" href="/robots.txt" />
-      <link rel="manifest" href="/manifest.json" />
-      <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
       <link rel="image_src" href={metaImage} />
       <link rel="canonical" href={fullUrl} />
       {locales.map((v) => (
         <link key={v} rel="alternate" hrefLang={v} href={`${process.env.NEXT_PUBLIC_HOST_URL}/${v}`} />
       ))}
-      {config.preconnect.map((v) => (
-        <link key={v} rel="preconnect dns-prefetch" href={v} />
-      ))}
-
-      {config.scripts.map((v) => (
-        <link key={v} rel="preload" as="script" href={v} />
-      ))}
-      {GoogleFonts()}
       {children}
     </Head>
   );

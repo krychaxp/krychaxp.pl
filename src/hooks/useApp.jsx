@@ -5,36 +5,26 @@ import { useLocalStorage } from 'react-use';
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const [darkMode, setDarkMode] = useLocalStorage('dark-mode', false);
   const [navIsOpen, setNavIsOpen] = useState(false);
-  const darkTheme = useMemo(
+  const [theme, setTheme] = useLocalStorage('theme', 'light');
+
+  const muiTheme = useMemo(
     () =>
       createMuiTheme({
         palette: {
-          type: darkMode ? 'dark' : 'light',
+          type: theme,
         },
       }),
-    [darkMode]
+    [theme]
   );
 
   useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add('dark-mode');
-    } else {
-      document.body.classList.remove('dark-mode');
-    }
-  }, [darkMode]);
+    document.body.dataset.theme = theme;
+  }, [theme]);
 
   return (
-    <AppContext.Provider
-      value={{
-        darkMode,
-        setDarkMode,
-        navIsOpen,
-        setNavIsOpen,
-      }}
-    >
-      <ThemeProvider theme={darkTheme}>{children}</ThemeProvider>
+    <AppContext.Provider value={{ navIsOpen, setNavIsOpen, theme, setTheme }}>
+      <ThemeProvider theme={muiTheme}>{children}</ThemeProvider>
     </AppContext.Provider>
   );
 };

@@ -21,8 +21,7 @@
     "ip": "^1.1.5",
     "next": "^11.0.0",
     "next-connect": "^0.10.1",
-    "next-translate": "^1.0.4",
-    "nextjs-google-fonts": "^3.3.2",
+    "next-translate": "^1.0.7",
     "nodemailer": "^6.5.0",
     "pretty": "^2.0.0",
     "react": "^17.0.2",
@@ -39,6 +38,7 @@
     "eslint": "^7.28.0",
     "eslint-config-next": "^11.0.0",
     "eslint-plugin-react": "^7.24.0",
+    "jimp": "^0.16.1",
     "prettier": "2.3.1"
   }
 }

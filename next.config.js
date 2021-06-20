@@ -1,7 +1,6 @@
 const nextTranslate = require('next-translate');
-const { withGoogleFonts } = require('nextjs-google-fonts');
 
-const options = withGoogleFonts({
+const options = {
   rewrites: () => [
     {
       source: '/static/:path*',
@@ -12,11 +11,6 @@ const options = withGoogleFonts({
       destination: `${process.env.CDN_URL_2}/:path*`,
     },
   ],
-  googleFonts: {
-    fonts: [
-      'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto&subset=latin-ext&display=swap',
-    ],
-  },
-});
+};
 
 module.exports = nextTranslate(options);

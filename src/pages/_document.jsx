@@ -1,6 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import { ServerStyleSheets } from '@material-ui/core/styles';
+import { scripts, preconnect, fonts } from 'config';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -25,13 +26,19 @@ export default class MyDocument extends Document {
   }
 
   render() {
+    const [googleAnalyticsUrl] = scripts;
+
     return (
       <Html>
         <Head>
-          <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_TRACKING_ID}`}
-          />
+          <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+          <link rel="shortcut icon" href="/favicon.ico" />
+          <link rel="icon" href="/favicon.ico" />
+          <link rel="apple-touch-icon" href="/favicon.ico" />
+          <link rel="robots" href="/robots.txt" />
+          <link rel="manifest" href="/manifest.json" />
+          <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+          <script async src={googleAnalyticsUrl} />
           <script
             dangerouslySetInnerHTML={{
               __html: `window.dataLayer = window.dataLayer || [];
@@ -43,6 +50,18 @@ gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_TRACKING_ID}', {
 `,
             }}
           />
+
+          {fonts.map((fontUrl) => (
+            <link rel="stylesheet" href={fontUrl} key={fontUrl} />
+          ))}
+
+          {preconnect.map((url) => (
+            <link key={url} rel="preconnect dns-prefetch" href={url} />
+          ))}
+
+          {scripts.map((scriptUrl) => (
+            <link key={scriptUrl} rel="preload" as="script" href={scriptUrl} />
+          ))}
         </Head>
         <body>
           <Main />

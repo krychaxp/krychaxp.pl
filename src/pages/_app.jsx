@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Layout } from 'src/layout';
+import { Layout } from 'src/components/Layout';
 import { AppProvider } from 'src/hooks/useApp';
 import { AlertProvider } from 'src/hooks/useAlert';
 import { LoadingProvider } from 'src/hooks/useLoading';
