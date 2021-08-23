@@ -1,7 +1,7 @@
 module.exports = {
   siteUrl: 'https://krychaxp.pl',
   website: 'krychaxp.pl',
-  title: 'Krystian Frydryk (Krychaxp)- Fullstack Developer',
+  title: 'Krystian Frydryk (Krychaxp) - Fullstack Developer',
   description: 'Krystian Frydryk (Krychaxp) - Fullstack Developer',
   keywords: [
     'www',
@@ -33,12 +33,4 @@ module.exports = {
     },
   },
   utm: '?utm_source=krychaxp.pl&utm_content=link',
-  scripts: [
-    `https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_TRACKING_ID}`,
-    'https://www.google-analytics.com/analytics.js',
-  ],
-  preconnect: ['https//www.googletagmanager.com', 'https//www.google-analytics.com', 'https://fonts.gstatic.com'],
-  fonts: [
-    'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto&subset=latin-ext&display=swap',
-  ],
 };

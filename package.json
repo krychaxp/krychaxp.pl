@@ -19,7 +19,7 @@
     "dns-info": "^0.1.0",
     "highcharts": "^9.1.0",
     "ip": "^1.1.5",
-    "next": "^11.0.0",
+    "next": "^11.1.0",
     "next-connect": "^0.10.1",
     "next-translate": "^1.0.7",
     "nodemailer": "^6.5.0",
@@ -36,7 +36,9 @@
   },
   "devDependencies": {
     "eslint": "^7.28.0",
+    "eslint-config-airbnb": "^18.2.1",
     "eslint-config-next": "^11.0.0",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-react": "^7.24.0",
     "jimp": "^0.16.1",
     "prettier": "2.3.1"
