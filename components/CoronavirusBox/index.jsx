@@ -6,7 +6,8 @@ import { useAlert } from 'hooks/useAlert';
 import { FullWidth } from './index.styles';
 import { Loading, CopyButton, SelectCountry, SelectPeriod, TableData, periodArray } from './others';
 
-export const CoronavirusBox = () => {
+export const CoronavirusBox = () => 'In refactoring';
+export const CoronavirusBox2 = () => {
   const [coronavirus, setCoronavirus] = useState(null);
   const [period, setPeriod] = useState(periodArray[0].id);
   const [series, setSeries] = useState([]);
